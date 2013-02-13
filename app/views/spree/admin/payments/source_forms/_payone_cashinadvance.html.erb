@@ -1,0 +1,5 @@
+<% param_prefix = "payment_source[#{payment_method.id}]" %>
+<% options_hash = Rails.env.production? ? {:autocomplete => 'off'} : {} %>
+
+<%= hidden_field param_prefix, 'first_name', :value => @order.billing_firstname %>
+<%= hidden_field param_prefix, 'last_name', :value => @order.billing_lastname %>

@@ -1,0 +1,29 @@
+<fieldset data-hook="debit_payment">
+  <legend><%= t(:debit_payment) %></legend>
+
+  <table class="index">
+    <tr>
+      <th colspan="4"><%= t(:details) %></th>
+    </tr>
+    <tr>
+      <td><%= label_tag nil, t(:bank_country) %>:</td>
+      <td>
+        <%= t(PayOne::Utils::BankCountry.validate_symbol(payment.source.bank_country)) %>
+      </td>
+      <td><%= label_tag nil, t(:bank_account) %>:</td>
+      <td>
+        <%= payment.source.bank_account %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= label_tag nil, t(:bank_code) %>:</td>
+      <td>
+        <%= payment.source.bank_code %>
+      </td>
+      <td><%= label_tag nil, t(:bank_account_holder) %>:</td>
+      <td>
+        <%= payment.source.bank_account_holder %>
+      </td>
+    </tr>
+  </table>
+</fieldset>

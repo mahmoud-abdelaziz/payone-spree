@@ -1,0 +1,215 @@
+<%
+  country_code = @order.bill_address.country.iso.to_s.upcase
+  
+  online_bank_transfer_type_options = []
+  payment_method.preferences[:online_bank_transfer_types].to_s.downcase.split(/,/).each do |online_bank_transfer_type|
+    online_bank_transfer_type = PayOne::Utils::OnlineBankTransferType.validate(online_bank_transfer_type.strip)
+    if online_bank_transfer_type != nil
+      online_bank_transfer_type_symbol = PayOne::Utils::OnlineBankTransferType.validate_symbol(online_bank_transfer_type) || online_bank_transfer_type
+      if PayOne::Utils::OnlineBankTransferType.validate_online_bank_transfer_type_country(online_bank_transfer_type_symbol, country_code)
+        online_bank_transfer_type_options << [t(online_bank_transfer_type_symbol), online_bank_transfer_type]
+      end
+    end
+  end
+%>
+
+<% param_prefix = "payment_source[#{payment_method.id}]" %>
+<% options_hash = Rails.env.production? ? {:autocomplete => 'off'} : {} %>
+
+<p id="method_not_available_container_<%= payment_method.id %>" class="field" data-hook="method_not_available" style="display: none">
+  <%= t(:payment_method_not_available_for_country, :country_code => country_code) %>
+</p>
+
+<p id="online_bank_transfer_type_container_<%= payment_method.id %>" class="field" data-hook="online_bank_transfer_type">
+  <%= label_tag nil, t(:online_bank_transfer_type) %><br />
+  <%= select_tag "#{param_prefix}[online_bank_transfer_type]", options_for_select(online_bank_transfer_type_options), options_hash.merge(:id => 'online_bank_transfer_type_' + payment_method.id.to_s, :class => 'required') %>
+</p>
+
+<p id="bank_account_container_<%= payment_method.id %>" class="field" data-hook="bank_account">
+  <%= label_tag nil, t(:bank_account) %><br />
+  <%= text_field_tag "#{param_prefix}[bank_account]", '', options_hash.merge(:id => 'bank_account_' + payment_method.id.to_s, :class => 'required') %>
+  <span class="req">*</span>
+</p>
+
+<p id="bank_code_container_<%= payment_method.id %>" class="field" data-hook="bank_code">
+  <%= label_tag nil, t(:bank_code) %><br />
+  <%= text_field_tag "#{param_prefix}[bank_code]", '', options_hash.merge(:id => 'bank_code_' + payment_method.id.to_s, :class => 'required') %>
+  <span class="req">*</span>
+</p>
+
+<%
+  eps_bank_group_type_options = {}
+  idl_bank_group_type_options = {}
+  PayOne::Utils::BankGroupType.eps_list.each do |type|
+    eps_bank_group_type_options[type] = t(PayOne::Utils::BankGroupType.validate_symbol(type))
+  end
+  PayOne::Utils::BankGroupType.idl_list.each do |type|
+    idl_bank_group_type_options[type] = t(PayOne::Utils::BankGroupType.validate_symbol(type))
+  end
+%>
+
+<p id="bank_group_type_container_<%= payment_method.id %>" class="field" data-hook="bank_group_type">
+  <%= label_tag nil, t(:bank_group_type) %><br />
+  <%= select_tag "#{param_prefix}[bank_group_type]", options_for_select([]), options_hash.merge(:id => 'bank_group_type_' + payment_method.id.to_s, :class => 'required') %>
+  <span class="req">*</span>
+</p>
+
+<%= hidden_field param_prefix, 'first_name', :value => @order.billing_firstname %>
+<%= hidden_field param_prefix, 'last_name', :value => @order.billing_lastname %>
+<%= hidden_field param_prefix, 'bank_country', :value => country_code %>
+
+<script type="text/javascript">
+
+  function OnlineBankTransfer(unique_id, current_country_code, eps_bank_group_type_options, idl_bank_group_type_options) {
+    this.unique_id = unique_id;
+    this.current_country_code = current_country_code;
+    this.eps_bank_group_type_options = eps_bank_group_type_options;
+    this.idl_bank_group_type_options = idl_bank_group_type_options;
+    this.tempBankAccountValue = undefined;
+    this.tempBankCodeValue = undefined;
+    
+    this.storeBankAccountValue = function() {
+      this.tempBankAccountValue = this.getBankAccount().val();
+      this.getBankAccount().val('');
+    };
+    
+    this.restoreBankAccountValue = function() {
+      if(this.tempBankAccountValue != undefined) {
+        this.getBankAccount().val(this.tempBankAccountValue);
+      }
+    };
+    
+    this.storeBankCodeValue = function() {
+      this.tempBankCodeValue = this.getBankCode().val();
+      this.getBankCode().val('');
+    };
+    
+    this.restoreBankCodeValue = function() {
+      if(this.tempBankCodeValue != undefined) {
+        this.getBankCode().val(this.tempBankCodeValue);
+      }
+    };
+    
+    this.getOnlineBankTransferType = function() {
+      return $('#online_bank_transfer_type_' + this.unique_id);
+    };
+    
+    this.getBankAccount = function() {
+      return $('#bank_account_' + this.unique_id);
+    };
+    
+    this.getBankCode = function() {
+      return $('#bank_code_' + this.unique_id);
+    };
+    
+    this.getBankGroupType = function() {
+      return $('#bank_group_type_' + this.unique_id);
+    };
+    
+    this.getOnlineBankTransferTypeContainer = function() {
+      return $('#online_bank_transfer_type_container_' + this.unique_id);
+    };
+    
+    this.getBankAccountContainer = function() {
+      return $('#bank_account_container_' + this.unique_id);
+    };
+    
+    this.getBankCodeContainer = function() {
+      return $('#bank_code_container_' + this.unique_id);
+    };
+    
+    this.getBankGroupTypeContainer = function() {
+      return $('#bank_group_type_container_' + this.unique_id);
+    };
+    
+    this.getMethodNotAvailableContainer = function() {
+      return $('#method_not_available_container_' + this.unique_id);
+    };
+    
+    this.onOnlineBankTransferTypeChanged = function() {
+      var online_bank_transfer = this;
+      var online_bank_transfer_type = this.getOnlineBankTransferType().val();
+      
+      var is_de = this.current_country_code == 'DE';
+      var is_at = this.current_country_code == 'AT';
+      var is_ch = this.current_country_code == 'CH';
+      var is_nl = this.current_country_code == 'NL';
+      
+      var is_pnt_type = (online_bank_transfer_type == 'PNT') && (is_de || is_at || is_ch);
+      var is_gpy_type = online_bank_transfer_type == 'GPY' && is_de;
+      var is_eps_type = online_bank_transfer_type == 'EPS' && is_at;
+      var is_pff_type = online_bank_transfer_type == 'PFF' && is_ch;
+      var is_pfc_type = online_bank_transfer_type == 'PFC' && is_ch;
+      var is_idl_type = online_bank_transfer_type == 'IDL' && is_nl;
+      
+      // clear all fileds
+      this.getBankGroupType().find('option').remove();
+      
+      // process country and online bank transfer type
+      if(!(is_pnt_type || is_gpy_type || is_eps_type || is_pff_type || is_pfc_type || is_idl_type)) {
+        this.getOnlineBankTransferTypeContainer().remove();
+        this.getBankAccountContainer().remove();
+        this.getBankCodeContainer().remove();
+        this.getBankGroupTypeContainer().remove();
+        this.getMethodNotAvailableContainer().show();
+      }
+      else {
+        // process bank account
+        if(is_pnt_type || is_gpy_type) {
+          this.restoreBankAccountValue();
+          this.getBankAccountContainer().show();
+        }
+        else {
+          this.storeBankAccountValue();
+          this.getBankAccountContainer().hide();
+        }
+        
+        // process bank code
+        if(is_pnt_type || is_gpy_type) {
+          this.restoreBankCodeValue();
+          this.getBankCodeContainer().show();
+        }
+        else {
+          this.storeBankCodeValue();
+          this.getBankCodeContainer().hide();
+        }
+        
+        // process bank group type
+        if(is_eps_type || is_idl_type) {
+          var bank_group_type_options = {};
+          if(is_eps_type) {
+            bank_group_type_options = this.eps_bank_group_type_options;
+          }
+          if(is_idl_type) {
+            bank_group_type_options = this.idl_bank_group_type_options;
+          }
+          
+          $.each(bank_group_type_options, function(key, value) {
+            online_bank_transfer.getBankGroupType()
+              .append($("<option></option>")
+              .attr("value",key)
+              .text(value)); 
+          });
+          
+          this.getBankGroupTypeContainer().show();
+        }
+        else {
+          this.getBankGroupTypeContainer().hide();
+        }
+      }
+    };
+    
+    this.register = function() {
+      this.onOnlineBankTransferTypeChanged();
+      this.getOnlineBankTransferType().change( { online_bank_transfer: this }, function(event) {
+        event.data.online_bank_transfer.onOnlineBankTransferTypeChanged();
+      });
+    };
+  }
+  
+  $(document).ready(function(){
+    var online_bank_transfer = new OnlineBankTransfer('<%= payment_method.id %>', '<%= country_code %>', <%= raw eps_bank_group_type_options.to_json %>, <%= raw idl_bank_group_type_options.to_json %>);
+    online_bank_transfer.register();
+  });
+
+</script>

@@ -1,0 +1,46 @@
+<fieldset>
+
+<% param_prefix = "payment_source[#{payment_method.id}]" %>
+<% options_hash = Rails.env.production? ? {:autocomplete => 'off'} : {} %>
+<%
+  country_code = @order.bill_address.country.iso.to_s.upcase
+  is_de = 'DE' == country_code
+  is_at = 'AT' == country_code
+  is_nl = 'NL' == country_code
+%>
+
+<% unless is_de or is_at or is_nl %>
+<div id="method_not_available_container_<%= payment_method.id %>" data-hook="method_not_available">
+  <%= t(:payment_method_not_available_for_country, :country_code => country_code) %>
+</div>
+<% end %>
+
+<% if is_de or is_at or is_nl %>
+<div id="bank_account_container_<%= payment_method.id %>" data-hook="bank_account">
+  <%= label_tag nil, t(:bank_account) %><br />
+  <%= text_field_tag "#{param_prefix}[bank_account]", '', options_hash.merge(:id => 'bank_account_' + payment_method.id.to_s, :class => 'required') %>
+  <span class="req">*</span>
+</div>
+<% end %>
+
+<% if is_de or is_at %>
+<div id="bank_code_container_<%= payment_method.id %>" data-hook="bank_code">
+  <%= label_tag nil, t(:bank_code) %><br />
+  <%= text_field_tag "#{param_prefix}[bank_code]", '', options_hash.merge(:id => 'bank_code_' + payment_method.id.to_s, :class => 'required') %>
+  <span class="req">*</span>
+</div>
+<% end %>
+
+<% if is_de or is_at or is_nl %>
+<div id="bank_account_holder_container_<%= payment_method.id %>" data-hook="bank_account_holder">
+  <%= label_tag nil, t(:bank_account_holder) %><br />
+  <%= text_field_tag "#{param_prefix}[bank_account_holder]", @order.billing_firstname + ' ' + @order.billing_lastname, options_hash.merge(:id => 'bank_account_holder_' + payment_method.id.to_s, :class => 'required') %>
+  <span class="req">*</span>
+</div>
+<% end %>
+
+<%= hidden_field param_prefix, 'first_name', :value => @order.billing_firstname %>
+<%= hidden_field param_prefix, 'last_name', :value => @order.billing_lastname %>
+<%= hidden_field param_prefix, 'bank_country', :value => country_code %>
+
+</fieldset>

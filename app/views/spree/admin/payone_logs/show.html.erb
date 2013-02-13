@@ -1,0 +1,26 @@
+<h1><%= t(:payone_log) %></h1>
+
+<table>
+  <tr data-hook="payone_log_level">
+    <th><%= t(:payone_log_level) %></th>
+    <td>
+      <%= @payone_log.level %>
+    </td>
+  </tr>
+  <tr data-hook="payone_log_message">
+    <th><%= t(:payone_log_message) %></th>
+    <td>
+      <%= @payone_log.message %>
+    </td>
+  </tr>
+  <tr data-hook="payone_log_created_at">
+    <th><%= t(:payone_log_created_at) %></th>
+    <td>
+      <%= @payone_log.created_at %>
+    </td>
+  </tr>
+</table>
+
+<p>
+  <%= link_to t(:back), collection_url %>
+</p>

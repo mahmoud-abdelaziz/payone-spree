@@ -1,0 +1,52 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<h1><%= t(:payone_settings) %></h1>
+
+<table data-hook="preferences">
+
+  <tr>
+    <th colspan="2" style="font-size: 150%"><%= t(:connection_preferences) %></th>
+  </tr>
+  <% @connection_preferences.each do |key, options|
+      type = Spree::Config.preference_type(key) %>
+  <tr>
+    <th scope="row"><%= t(key) %>:</th>
+    <td><%= payone_settings_preference_visible_value(Spree::Config[key], options.merge!(:type => type)) %></td>
+  </tr>
+  <% end %>
+  
+  <tr>
+    <th colspan="2" style="font-size: 150%"><%= t(:redirect_url_preferences) %></th>
+  </tr>
+  <% @redirect_url_preferences.each do |key, options|
+      type = Spree::Config.preference_type(key) %>
+  <tr>
+    <th scope="row"><%= t(key) %>:</th>
+    <td><%= payone_settings_preference_visible_value(Spree::Config[key], options.merge!(:type => type)) %></td>
+  </tr>
+  <% end %>
+  
+  <tr>
+    <th colspan="2" style="font-size: 150%"><%= t(:logging_preferences) %></th>
+  </tr>
+  <% @logging_preferences.each do |key, options|
+      type = Spree::Config.preference_type(key) %>
+  <tr>
+    <th scope="row"><%= t(key) %>:</th>
+    <td><%= payone_settings_preference_visible_value(Spree::Config[key], options.merge!(:type => type)) %></td>
+  </tr>
+  <% end %>
+  
+  <tr>
+    <th colspan="2" style="font-size: 150%"><%= t(:validation_preferences) %></th>
+  </tr>
+  <% @validation_preferences.each do |key, options|
+      type = Spree::Config.preference_type(key) %>
+  <tr>
+    <th scope="row"><%= t(key) %>:</th>
+    <td><%= payone_settings_preference_visible_value(Spree::Config[key], options.merge!(:type => type)) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p><%= link_to_with_icon 'edit', t(:edit), edit_admin_payone_settings_path, :id => 'admin_payone_settings_link' %></p>

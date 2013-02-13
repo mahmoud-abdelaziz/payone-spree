@@ -1,0 +1,220 @@
+en:
+  # Translations for /admin/payone_settings pages
+  payone_settings: "PAYONE Settings"
+  edit_payone_settings: "Edit PAYONE Settings"
+  payone_settings_description: "Configure PAYONE settings."
+  
+  connection_preferences: "Connection Preferences (Global Settings)"
+  redirect_url_preferences: "Redirect Url Preferences"
+  logging_preferences: "Logging Preferences"
+  validation_preferences: "Validation Preferences"
+  billing_address_validation_preferences: "Billing Address Validation Preferences"
+  shipping_address_validation_preferences: "Shipping Address Validation Preferences"
+  address_check_validation_preferences: "Addresscheck Validation Preferences"
+  consumer_score_validation_preferences: "Consumerscore Validation Preferences"
+  
+  # Translations for /admin/payone_logs pages
+  payone_logs: "PAYONE Logs"
+  payone_logs_description: "Browse PAYONE logs stored in DB."
+  payone_log: "PAYONE Log"
+  listing_payone_logs: "Listing PAYONE Logs"
+  payone_log_level: "Level"
+  payone_log_message: "Message"
+  payone_log_created_at: "Created At"
+  payone_log_level_title: "Level"
+  payone_log_message_title: "Message"
+  payone_log_created_at_title: "Created At"
+  clear_payone_logs: "Clear All"
+  payone_log_is_not_found: "PAYONE Log is not found"
+  
+  # Translations for /admin/payone_docs pages
+  payone_docs: "PAYONE Documentation"
+  payone_docs_description: "PAYONE configuration documentation for Spree engine."
+  
+  # Translation for preferences (analogue to preference names)
+  payone_merchant_id: "PAYONE Merchant-ID"
+  payone_payment_portal_id: "PAYONE Portal-ID"
+  payone_payment_portal_key: "PAYONE Key"
+  payone_sub_account_id: "PAYONE Sub-Account ID"
+  payone_test_mode: "PAYONE Test Mode"
+  
+  payone_engine_host: "PAYONE Engine Host"
+  
+  payone_billing_address_validation_type: "PAYONE Billing Address Validation Type"
+  payone_billing_address_address_check_address_check_type: "Address Check Type"
+  payone_billing_address_consumer_score_address_check_type: "Address Check Type"
+  payone_billing_address_consumer_score_consumer_score_type: "Consumer Score Type"
+  
+  payone_shipping_address_validation_type: "PAYONE Shipping Address Validation Type"
+  payone_shipping_address_address_check_address_check_type: "Address Check Type"
+  payone_shipping_address_consumer_score_address_check_type: "Address Check Type"
+  payone_shipping_address_consumer_score_consumer_score_type: "Consumer Score Type"
+  
+  payone_address_check_none_person_status_to_consumer_score_score_mapping: "Map \"No verification of personal data carried out\" Addresscheck person status to Consumerscore score:"
+  payone_address_check_ppb_person_status_to_consumer_score_score_mapping: "Map \"First name and surname known\" Addresscheck person status to Consumerscore score:"
+  payone_address_check_phb_person_status_to_consumer_score_score_mapping: "Map \"Surname known\" Addresscheck person status to Consumerscore score:"
+  payone_address_check_pab_person_status_to_consumer_score_score_mapping: "Map \"First name and surname unknown\" Addresscheck person status to Consumerscore score:"
+  payone_address_check_pki_person_status_to_consumer_score_score_mapping: "Map \"Ambiguity in name and address\" Addresscheck person status to Consumerscore score:"
+  payone_address_check_pnz_person_status_to_consumer_score_score_mapping: "Map \"Cannot be delivered (any longer)\" Addresscheck person status to Consumerscore score:"
+  payone_address_check_ppv_person_status_to_consumer_score_score_mapping: "Map \"Person deceased\" Addresscheck person status to Consumerscore score:"
+  payone_address_check_ppf_person_status_to_consumer_score_score_mapping: "Map \"Postal address details incorrect\" Addresscheck person status to Consumerscore score:"
+  
+  payone_consumer_score_on_yellow_score_allow_total_under: "On \"Yellow (average degree of creditworthiness)\" Consumerscore score allow all PAYONE payment methods if order total under:"
+  payone_consumer_score_on_yellow_score_block_total_over: "On \"Yellow (average degree of creditworthiness)\" Consumerscore score block all PAYONE payment methods if order total over:"
+  
+  payone_consumer_score_on_yellow_score_gateway_payone_credit_card_enabled: "On \"Yellow (average degree of creditworthiness)\" Consumerscore score Spree::Gateway::PAYONE::CreditCard enabled"
+  payone_consumer_score_on_yellow_score_payment_method_payone_online_bank_transfer_enabled: "On \"Yellow (average degree of creditworthiness)\" Consumerscore score Spree::PaymentMethod::PAYONE::OnlineBankTransfer enabled"
+  payone_consumer_score_on_yellow_score_payment_method_payone_debit_payment_enabled: "On \"Yellow (average degree of creditworthiness)\" Consumerscore score Spree::PaymentMethod::PAYONE::DebitPayment enabled"
+  payone_consumer_score_on_yellow_score_payment_method_payone_e_wallet_enabled: "On \"Yellow (average degree of creditworthiness)\" Consumerscore score Spree::PaymentMethod::PAYONE::EWallet enabled"
+  payone_consumer_score_on_yellow_score_payment_method_payone_cash_on_delivery_enabled: "On \"Yellow (average degree of creditworthiness)\" Consumerscore score Spree::PaymentMethod::PAYONE::CashOnDelivery enabled"
+  payone_consumer_score_on_yellow_score_payment_method_payone_cash_in_advance_enabled: "On \"Yellow (average degree of creditworthiness)\" Consumerscore score Spree::PaymentMethod::PAYONE::CashInAdvance enabled"
+  payone_consumer_score_on_yellow_score_payment_method_payone_invoice_enabled: "On \"Yellow (average degree of creditworthiness)\" Consumerscore score Spree::PaymentMethod::PAYONE::Invoice enabled"
+  
+  payone_db_logging_enabled: "PAYONE DB Logging Enabled"
+  payone_db_logging_disabled: "PAYONE DB Logging Disabled"
+  payone_file_logging_enabled: "PAYONE File Logging Enabled"
+  
+  # Translations for gateway/payment method source names
+  cash_on_delivery: "Cash On Delivery"
+  credit_card: "Credit Card"
+  debit_payment: "Debit Payment"
+  e_wallet: "E-wallet"
+  invoice: "Invoice"
+  online_bank_transfer: "Online Bank Transfer"
+  cash_in_advance: "Cash In Advance"
+  
+  # Translations for gateway/payment method source field names
+  shipping_provider: "Shipping Provider"
+  card_number: "Card Number"
+  expiration: "Expiration"
+  card_code: "Card Code"
+  card_type: "Card Type"
+  card_holder: "Card Holder"
+  bank_country: "Bank Country"
+  bank_account: "Bank Accout"
+  bank_code: "Bank Code"
+  bank_account_holder: "Bank Account Holder"
+  wallet_type: "Wallet Type"
+  online_bank_transfer_type: "Online Bank Transfer Type"
+  bank_group_type: "Bank Group Type"
+  
+  # Translations for gateway/payment method preferenced (analogue to preference names)
+  use_global_account_settings: "Use Global Account Settings"
+  merchant_id: "Merchant-ID"
+  payment_portal_id: "Portal-ID"
+  payment_portal_key: "Key"
+  sub_account_id: "Sub-Account ID"
+  test_mode: "Test Mode"
+  currency_code: "Currency Code (ISO 4217)"
+  
+  credit_card_types: "Credit Card Types"
+  online_bank_transfer_types: "Online Bank Transfer Types"
+  
+  # Translations for request/response values
+  address_check_type_basic: "Address verification Basic (BA)"
+  address_check_type_person: "Address verification Person (PE)"
+  address_check_type_no: "Do not carry out address check"
+  
+  address_validation_type_none: "None"
+  address_validation_type_address_check: "Address verification"
+  address_validation_type_consumer_score: "Consumerscore (Verification of creditworthiness)"
+  
+  consumer_score_type_ih: "Infoscore (hard criteria)"
+  consumer_score_type_ia: "Infoscore (all criteria)"
+  consumer_score_type_ib: "Infoscore (all criteria + bonuses score)"
+  
+  credit_card_type_visa: "Visa"
+  credit_card_type_mastercard: "Mastercard"
+  credit_card_type_amex: "American Express"
+  credit_card_type_diners: "Diners"
+  credit_card_type_jbc: "JBC"
+  credit_card_type_maestro_international: "Maestro International"
+  credit_card_type_discover: "Discover"
+  credit_card_type_carte_bleue: "Carte Bleue"
+  
+  online_bank_transfer_type_instant_money_transfer: "Instant money transfer"
+  online_bank_transfer_type_giropay: "Giropay"
+  online_bank_transfer_type_online_transfer: "Online transfer"
+  online_bank_transfer_type_postfinance_e_finance: "PostFinance E-Finance"
+  online_bank_transfer_type_postfinance_card: "PostFinance Card"
+  online_bank_transfer_type_ideal: "iDeal"
+  
+  person_status_none: "No verification of personal data carried out"
+  person_status_ppb: "First name and surname known"
+  person_status_phb: "Surname known"
+  person_status_pab: "First name and surname unknown"
+  person_status_pki: "Ambiguity in name and address"
+  person_status_pnz: "Cannot be delivered (any longer)"
+  person_status_ppv: "Person deceased"
+  person_status_ppf: "Postal address details incorrect"
+  
+  score_green: "Green (high degree of creditworthiness)"
+  score_yellow: "Yellow (average degree of creditworthiness)"
+  score_red: "Red (low degree of creditworthiness)"
+  
+  sec_status_s10: "10"
+  sec_status_s20: "20"
+  sec_status_s30: "30"
+  
+  shipping_provider_dhl: "DHL"
+  shipping_provider_bartolini: "Bartolini"
+  
+  store_card_data_yes: "Yes"
+  store_card_data_no: "No"
+  
+  wallet_type_paypal_express: "PayPal Express"
+  
+  bank_country_de: "Germany"
+  bank_country_at: "Austria"
+  bank_country_nl: "Netherlands"
+  bank_country_ch: "Switzerland"
+  
+  bank_group_type_arz_ovb: "Commercial credit cooperatives (Volksbank)"
+  bank_group_type_arz_baf: "Bank for doctors and independent professions"
+  bank_group_type_arz_nlh: "Hypo state bank Lower Austria"
+  bank_group_type_arz_vlh: "Hypo state bank Voralberg"
+  bank_group_type_agarz_bcs: "Bankhaus Carl Spängler & Co."
+  bank_group_type_arz_htb: "Hypo bank Tyrol"
+  bank_group_type_arz_haa: "Hypo Alpe Adria"
+  bank_group_type_arz_ikb: "Investkredit bank"
+  bank_group_type_arz_oab: "Österreichische Apothekerbank"
+  bank_group_type_arz_imb: "Immobank"
+  bank_group_type_arz_grb: "Gärtnerbank"
+  bank_group_type_arz_hib: "HYPO Investment bank"
+  bank_group_type_ba_aus: "Bank Austria"
+  bank_group_type_bawag_bwg: "BAWAG"
+  bank_group_type_bawag_psk: "PSK Bank"
+  bank_group_type_bawag_esy: "easybank"
+  bank_group_type_bawag_spd: "Sparda Bank"
+  bank_group_type_spardat_ebs: "Erste Bank"
+  bank_group_type_spardat_bbl: "Bank Burgenland"
+  bank_group_type_rac_rac: "Raiffeisen bank"
+  bank_group_type_hrac_oos: "Hypo bank Upper Austria"
+  bank_group_type_hrac_slb: "Hypo bank Salzburg"
+  bank_group_type_hrac_stm: "Hypo bank Styria"
+  bank_group_type_abn_amro_bank: "ABN Amro"
+  bank_group_type_rabobank: "Rabobank"
+  bank_group_type_friesland_bank: "Friesland Bank"
+  bank_group_type_asn_bank: "ASN Bank"
+  bank_group_type_sns_bank: "SNS Bank"
+  bank_group_type_triodos_bank: "Triodos"
+  bank_group_type_sns_regio_bank: "SNS Regio Bank"
+  bank_group_type_ing_bank: "ING"
+  
+  # Translation for custom messages
+  payone_credit_card_check_failed: "PAYONE credit card check failed"
+  payment_processing_canceled: "Payment could not be processed because it has been canceled"
+  payment_method_not_available_for_country: "Selected payment method is not available for your country (%{country_code})"
+  details: "Details"
+  
+  # Translations for errors
+  errors:
+    messages:
+      person_status_none: "No verification of personal data carried out"
+      person_status_ppb: "First name and surname known"
+      person_status_phb: "Surname known"
+      person_status_pab: "First name and surname unknown"
+      person_status_pki: "Ambiguity in name and address"
+      person_status_pnz: "Cannot be delivered (any longer)"
+      person_status_ppv: "Person deceased"
+      person_status_ppf: "Postal address details incorrect"
