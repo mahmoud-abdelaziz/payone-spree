@@ -1,4 +1,4 @@
-# Spree Skrill (Moneybookers)
+# Spree PAYONE (Paymentgateway)
 
 Add support for PAYONE payment methods and gateway as a payment methods.
 
@@ -7,13 +7,21 @@ Add support for PAYONE payment methods and gateway as a payment methods.
 1. Add the following to your Gemfile
 
 <pre>
-    gem 'spree_payone', :git => 'git://github.com/spree/spree_payone.git'
+    gem 'spree_payone', :git => 'git://github.com/PAYONE/spree.git' 
 </pre>
 
-2. Run `bundle install`
+2. Run 
 
-3. To copy and apply migrations run: `rails g spree_payone:install`
+<pre>
+  $ bundle install
+</pre>
+
+3. To copy and apply migrations run: 
+
+<pre>
+  $ rails g spree_payone:install
+</pre>
 
 ## Configuring
 
-1. After installation see 'PAYONE Documentation' under 'Configurataion' tab.
+1. After the installation visit 'PAYONE Documentation' under the 'Configurataion' tab.
