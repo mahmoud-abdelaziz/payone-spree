@@ -24,4 +24,4 @@ Add support for PAYONE payment methods and gateway as a payment methods.
 
 ## Configuring
 
-1. After the installation visit 'PAYONE Documentation' under the 'Configurataion' tab.
+1. After the installation visit 'PAYONE Documentation' under the 'Configuration' tab.
