@@ -8,7 +8,7 @@
     <tr>
       <td><%= label_tag nil, t(:wallet_type) %>:</td>
       <td>
-        <%= t(PayOne::Utils::WalletType.validate_symbol(payment.source.wallet_type)) %>
+        <%= t(Spree::PAYONE::Utils::WalletType.validate_symbol(payment.source.wallet_type)) %>
       </td>
     </tr>
   </table>

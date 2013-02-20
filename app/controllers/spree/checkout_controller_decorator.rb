@@ -43,7 +43,7 @@ module Spree
       end
     end
     
-    def pay_one_success
+    def payone_success
       token = params[:token]
       action_token = params[:action_token]
       payment_id = params[:payment_id]
@@ -88,7 +88,7 @@ module Spree
       return
     end
     
-    def pay_one_error
+    def payone_error
       token = params[:token]
       action_token = params[:action_token]
       payment_id = params[:payment_id]
@@ -109,14 +109,14 @@ module Spree
         end
       end
       
-      @order.state = :payment
+      @order.state = 'payment'
       @order.save
       
       flash[:error] = t(:payment_processing_failed)
       respond_with(@order) { |format| format.html { render :edit } }
     end
     
-    def pay_one_back
+    def payone_back
       token = params[:token]
       action_token = params[:action_token]
       payment_id = params[:payment_id]
@@ -137,7 +137,7 @@ module Spree
         end
       end
       
-      @order.state = :payment
+      @order.state = 'payment'
       @order.save
       
       flash[:error] = t(:payment_processing_canceled)

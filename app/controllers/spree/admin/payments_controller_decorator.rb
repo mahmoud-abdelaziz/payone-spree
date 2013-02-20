@@ -66,7 +66,7 @@ module Spree
         end
       end
       
-      def pay_one_success
+      def payone_success
         token = params[:token]
         action_token = params[:action_token]
         payment_id = @payment.id
@@ -102,7 +102,7 @@ module Spree
         respond_with(@payment) { |format| format.html { redirect_to new_admin_order_payment_path(@order) } }
       end
       
-      def pay_one_error
+      def payone_error
         token = params[:token]
         action_token = params[:action_token]
         payment_id = @payment.id
@@ -118,7 +118,7 @@ module Spree
         respond_with(@payment) { |format| format.html { redirect_to new_admin_order_payment_path(@order) } }
       end
       
-      def pay_one_back
+      def payone_back
         token = params[:token]
         action_token = params[:action_token]
         payment_id = @payment.id

@@ -30,7 +30,7 @@ module Spree
     
     # Provider class responsible for Spree gateway actions implementation
     def provider_class
-      ::PayOne::Provider::Payment::CreditCard
+      ::Spree::PAYONE::Provider::Payment::CreditCard
     end
     
     # Payment source class
@@ -49,7 +49,7 @@ module Spree
       
       # process creditcardcheck and retrieve profile id
       if creditcard.gateway_customer_profile_id.nil?
-        creditCardCheck = ::PayOne::Provider::Check::CreditCard.new(method.options)
+        creditCardCheck = ::Spree::PAYONE::Provider::Check::CreditCard.new(method.options)
         response = creditCardCheck.process payment.source, {}
         
         if response.valid_status?

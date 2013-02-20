@@ -3,9 +3,9 @@ Spree::Core::Engine.routes.draw do
     resources :orders do
       resource :checkout, :controller => 'checkout' do
         member do
-          get :pay_one_success
-          get :pay_one_error
-          get :pay_one_back
+          get :payone_success
+          get :payone_error
+          get :payone_back
         end
       end
     end
@@ -14,9 +14,9 @@ Spree::Core::Engine.routes.draw do
       resources :orders do
         resources :payments do
           member do
-            get :pay_one_success
-            get :pay_one_error
-            get :pay_one_back
+            get :payone_success
+            get :payone_error
+            get :payone_back
           end
         end
       end

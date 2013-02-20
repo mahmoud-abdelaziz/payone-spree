@@ -48,7 +48,7 @@ module Spree
     end
     
     Order.state_machines[:state].before_transition :to => ['delivery'] do |order|
-      valid = ::PayOne::Validators::OrderAddress.validate order
+      valid = ::Spree::PAYONE::Validators::OrderAddress.validate order
       if valid
         order.shipments.each { |s| s.destroy unless s.shipping_method.available_to_order?(order) }
       else

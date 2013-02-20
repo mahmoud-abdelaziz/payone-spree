@@ -14,7 +14,7 @@ module Spree
     
     # Provider class responsible for Spree gateway actions implementation
     def provider_class
-      ::PayOne::Provider::Payment::EWallet
+      ::Spree::PAYONE::Provider::Payment::EWallet
     end
     
     # Payment source class

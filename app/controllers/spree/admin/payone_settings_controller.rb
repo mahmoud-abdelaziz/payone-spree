@@ -22,103 +22,103 @@ module Spree
         @validation_preferences = {
           :payone_billing_address_validation_type => {
             :values => [
-              [PayOne::Utils::AddressValidationType::NONE_SYMBOL, PayOne::Utils::AddressValidationType::NONE],
-              [PayOne::Utils::AddressValidationType::ADDRESSCHECK_SYMBOL, PayOne::Utils::AddressValidationType::ADDRESSCHECK],
-              [PayOne::Utils::AddressValidationType::CONSUMERSCORE_SYMBOL, PayOne::Utils::AddressValidationType::CONSUMERSCORE]]
+              [Spree::PAYONE::Utils::AddressValidationType::NONE_SYMBOL, Spree::PAYONE::Utils::AddressValidationType::NONE],
+              [Spree::PAYONE::Utils::AddressValidationType::ADDRESSCHECK_SYMBOL, Spree::PAYONE::Utils::AddressValidationType::ADDRESSCHECK],
+              [Spree::PAYONE::Utils::AddressValidationType::CONSUMERSCORE_SYMBOL, Spree::PAYONE::Utils::AddressValidationType::CONSUMERSCORE]]
           },
           :payone_shipping_address_validation_type => {
             :values => [
-              [PayOne::Utils::AddressValidationType::NONE_SYMBOL, PayOne::Utils::AddressValidationType::NONE],
-              [PayOne::Utils::AddressValidationType::ADDRESSCHECK_SYMBOL, PayOne::Utils::AddressValidationType::ADDRESSCHECK]]
-              #[PayOne::Utils::AddressValidationType::CONSUMERSCORE_SYMBOL, PayOne::Utils::AddressValidationType::CONSUMERSCORE]]
+              [Spree::PAYONE::Utils::AddressValidationType::NONE_SYMBOL, Spree::PAYONE::Utils::AddressValidationType::NONE],
+              [Spree::PAYONE::Utils::AddressValidationType::ADDRESSCHECK_SYMBOL, Spree::PAYONE::Utils::AddressValidationType::ADDRESSCHECK]]
+              #[Spree::PAYONE::Utils::AddressValidationType::CONSUMERSCORE_SYMBOL, Spree::PAYONE::Utils::AddressValidationType::CONSUMERSCORE]]
           }
         }
         
         @address_validation_preferences = {
           :payone_billing_address_address_check_address_check_type => {
             :values => [
-              [PayOne::Utils::AddressCheckType::BASIC_SYMBOL, PayOne::Utils::AddressCheckType::BASIC],
-              [PayOne::Utils::AddressCheckType::PERSON_SYMBOL, PayOne::Utils::AddressCheckType::PERSON]]
+              [Spree::PAYONE::Utils::AddressCheckType::BASIC_SYMBOL, Spree::PAYONE::Utils::AddressCheckType::BASIC],
+              [Spree::PAYONE::Utils::AddressCheckType::PERSON_SYMBOL, Spree::PAYONE::Utils::AddressCheckType::PERSON]]
           },
           :payone_billing_address_consumer_score_address_check_type => {
             :values => [
-              [PayOne::Utils::AddressCheckType::BASIC_SYMBOL, PayOne::Utils::AddressCheckType::BASIC],
-              [PayOne::Utils::AddressCheckType::PERSON_SYMBOL, PayOne::Utils::AddressCheckType::PERSON],
-              [PayOne::Utils::AddressCheckType::NO_SYMBOL, PayOne::Utils::AddressCheckType::NO]]
+              [Spree::PAYONE::Utils::AddressCheckType::BASIC_SYMBOL, Spree::PAYONE::Utils::AddressCheckType::BASIC],
+              [Spree::PAYONE::Utils::AddressCheckType::PERSON_SYMBOL, Spree::PAYONE::Utils::AddressCheckType::PERSON],
+              [Spree::PAYONE::Utils::AddressCheckType::NO_SYMBOL, Spree::PAYONE::Utils::AddressCheckType::NO]]
           },
           :payone_billing_address_consumer_score_consumer_score_type => {
             :values => [
-              [PayOne::Utils::ConsumerScoreType::IH_SYMBOL, PayOne::Utils::ConsumerScoreType::IH],
-              [PayOne::Utils::ConsumerScoreType::IA_SYMBOL, PayOne::Utils::ConsumerScoreType::IA],
-              [PayOne::Utils::ConsumerScoreType::IB_SYMBOL, PayOne::Utils::ConsumerScoreType::IB]]
+              [Spree::PAYONE::Utils::ConsumerScoreType::IH_SYMBOL, Spree::PAYONE::Utils::ConsumerScoreType::IH],
+              [Spree::PAYONE::Utils::ConsumerScoreType::IA_SYMBOL, Spree::PAYONE::Utils::ConsumerScoreType::IA],
+              [Spree::PAYONE::Utils::ConsumerScoreType::IB_SYMBOL, Spree::PAYONE::Utils::ConsumerScoreType::IB]]
           },
           :payone_shipping_address_address_check_address_check_type => {
             :values => [
-              [PayOne::Utils::AddressCheckType::BASIC_SYMBOL, PayOne::Utils::AddressCheckType::BASIC],
-              [PayOne::Utils::AddressCheckType::PERSON_SYMBOL, PayOne::Utils::AddressCheckType::PERSON]]
+              [Spree::PAYONE::Utils::AddressCheckType::BASIC_SYMBOL, Spree::PAYONE::Utils::AddressCheckType::BASIC],
+              [Spree::PAYONE::Utils::AddressCheckType::PERSON_SYMBOL, Spree::PAYONE::Utils::AddressCheckType::PERSON]]
           },
           :payone_shipping_address_consumer_score_address_check_type => {
             :values => [
-              [PayOne::Utils::AddressCheckType::BASIC_SYMBOL, PayOne::Utils::AddressCheckType::BASIC],
-              [PayOne::Utils::AddressCheckType::PERSON_SYMBOL, PayOne::Utils::AddressCheckType::PERSON],
-              [PayOne::Utils::AddressCheckType::NO_SYMBOL, PayOne::Utils::AddressCheckType::NO]]
+              [Spree::PAYONE::Utils::AddressCheckType::BASIC_SYMBOL, Spree::PAYONE::Utils::AddressCheckType::BASIC],
+              [Spree::PAYONE::Utils::AddressCheckType::PERSON_SYMBOL, Spree::PAYONE::Utils::AddressCheckType::PERSON],
+              [Spree::PAYONE::Utils::AddressCheckType::NO_SYMBOL, Spree::PAYONE::Utils::AddressCheckType::NO]]
           },
           :payone_shipping_address_consumer_score_consumer_score_type => {
             :values => [
-              [PayOne::Utils::ConsumerScoreType::IH_SYMBOL, PayOne::Utils::ConsumerScoreType::IH],
-              [PayOne::Utils::ConsumerScoreType::IA_SYMBOL, PayOne::Utils::ConsumerScoreType::IA],
-              [PayOne::Utils::ConsumerScoreType::IB_SYMBOL, PayOne::Utils::ConsumerScoreType::IB]]
+              [Spree::PAYONE::Utils::ConsumerScoreType::IH_SYMBOL, Spree::PAYONE::Utils::ConsumerScoreType::IH],
+              [Spree::PAYONE::Utils::ConsumerScoreType::IA_SYMBOL, Spree::PAYONE::Utils::ConsumerScoreType::IA],
+              [Spree::PAYONE::Utils::ConsumerScoreType::IB_SYMBOL, Spree::PAYONE::Utils::ConsumerScoreType::IB]]
           }
         }
         
         @address_check_validation_preferences = {
           :payone_address_check_none_person_status_to_consumer_score_score_mapping => {
             :values => [
-              [PayOne::Utils::Score::GREEN_SYMBOL, PayOne::Utils::Score::GREEN],
-              [PayOne::Utils::Score::YELLOW_SYMBOL, PayOne::Utils::Score::YELLOW],
-              [PayOne::Utils::Score::RED_SYMBOL, PayOne::Utils::Score::RED]]
+              [Spree::PAYONE::Utils::Score::GREEN_SYMBOL, Spree::PAYONE::Utils::Score::GREEN],
+              [Spree::PAYONE::Utils::Score::YELLOW_SYMBOL, Spree::PAYONE::Utils::Score::YELLOW],
+              [Spree::PAYONE::Utils::Score::RED_SYMBOL, Spree::PAYONE::Utils::Score::RED]]
           },
           :payone_address_check_ppb_person_status_to_consumer_score_score_mapping => {
             :values => [
-              [PayOne::Utils::Score::GREEN_SYMBOL, PayOne::Utils::Score::GREEN],
-              [PayOne::Utils::Score::YELLOW_SYMBOL, PayOne::Utils::Score::YELLOW],
-              [PayOne::Utils::Score::RED_SYMBOL, PayOne::Utils::Score::RED]]
+              [Spree::PAYONE::Utils::Score::GREEN_SYMBOL, Spree::PAYONE::Utils::Score::GREEN],
+              [Spree::PAYONE::Utils::Score::YELLOW_SYMBOL, Spree::PAYONE::Utils::Score::YELLOW],
+              [Spree::PAYONE::Utils::Score::RED_SYMBOL, Spree::PAYONE::Utils::Score::RED]]
           },
           :payone_address_check_phb_person_status_to_consumer_score_score_mapping => {
             :values => [
-              [PayOne::Utils::Score::GREEN_SYMBOL, PayOne::Utils::Score::GREEN],
-              [PayOne::Utils::Score::YELLOW_SYMBOL, PayOne::Utils::Score::YELLOW],
-              [PayOne::Utils::Score::RED_SYMBOL, PayOne::Utils::Score::RED]]
+              [Spree::PAYONE::Utils::Score::GREEN_SYMBOL, Spree::PAYONE::Utils::Score::GREEN],
+              [Spree::PAYONE::Utils::Score::YELLOW_SYMBOL, Spree::PAYONE::Utils::Score::YELLOW],
+              [Spree::PAYONE::Utils::Score::RED_SYMBOL, Spree::PAYONE::Utils::Score::RED]]
           },
           :payone_address_check_pab_person_status_to_consumer_score_score_mapping => {
             :values => [
-              [PayOne::Utils::Score::GREEN_SYMBOL, PayOne::Utils::Score::GREEN],
-              [PayOne::Utils::Score::YELLOW_SYMBOL, PayOne::Utils::Score::YELLOW],
-              [PayOne::Utils::Score::RED_SYMBOL, PayOne::Utils::Score::RED]]
+              [Spree::PAYONE::Utils::Score::GREEN_SYMBOL, Spree::PAYONE::Utils::Score::GREEN],
+              [Spree::PAYONE::Utils::Score::YELLOW_SYMBOL, Spree::PAYONE::Utils::Score::YELLOW],
+              [Spree::PAYONE::Utils::Score::RED_SYMBOL, Spree::PAYONE::Utils::Score::RED]]
           },
           :payone_address_check_pki_person_status_to_consumer_score_score_mapping => {
             :values => [
-              [PayOne::Utils::Score::GREEN_SYMBOL, PayOne::Utils::Score::GREEN],
-              [PayOne::Utils::Score::YELLOW_SYMBOL, PayOne::Utils::Score::YELLOW],
-              [PayOne::Utils::Score::RED_SYMBOL, PayOne::Utils::Score::RED]]
+              [Spree::PAYONE::Utils::Score::GREEN_SYMBOL, Spree::PAYONE::Utils::Score::GREEN],
+              [Spree::PAYONE::Utils::Score::YELLOW_SYMBOL, Spree::PAYONE::Utils::Score::YELLOW],
+              [Spree::PAYONE::Utils::Score::RED_SYMBOL, Spree::PAYONE::Utils::Score::RED]]
           },
           :payone_address_check_pnz_person_status_to_consumer_score_score_mapping => {
             :values => [
-              [PayOne::Utils::Score::GREEN_SYMBOL, PayOne::Utils::Score::GREEN],
-              [PayOne::Utils::Score::YELLOW_SYMBOL, PayOne::Utils::Score::YELLOW],
-              [PayOne::Utils::Score::RED_SYMBOL, PayOne::Utils::Score::RED]]
+              [Spree::PAYONE::Utils::Score::GREEN_SYMBOL, Spree::PAYONE::Utils::Score::GREEN],
+              [Spree::PAYONE::Utils::Score::YELLOW_SYMBOL, Spree::PAYONE::Utils::Score::YELLOW],
+              [Spree::PAYONE::Utils::Score::RED_SYMBOL, Spree::PAYONE::Utils::Score::RED]]
           },
           :payone_address_check_ppv_person_status_to_consumer_score_score_mapping => {
             :values => [
-              [PayOne::Utils::Score::GREEN_SYMBOL, PayOne::Utils::Score::GREEN],
-              [PayOne::Utils::Score::YELLOW_SYMBOL, PayOne::Utils::Score::YELLOW],
-              [PayOne::Utils::Score::RED_SYMBOL, PayOne::Utils::Score::RED]]
+              [Spree::PAYONE::Utils::Score::GREEN_SYMBOL, Spree::PAYONE::Utils::Score::GREEN],
+              [Spree::PAYONE::Utils::Score::YELLOW_SYMBOL, Spree::PAYONE::Utils::Score::YELLOW],
+              [Spree::PAYONE::Utils::Score::RED_SYMBOL, Spree::PAYONE::Utils::Score::RED]]
           },
           :payone_address_check_ppf_person_status_to_consumer_score_score_mapping => {
             :values => [
-              [PayOne::Utils::Score::GREEN_SYMBOL, PayOne::Utils::Score::GREEN],
-              [PayOne::Utils::Score::YELLOW_SYMBOL, PayOne::Utils::Score::YELLOW],
-              [PayOne::Utils::Score::RED_SYMBOL, PayOne::Utils::Score::RED]]
+              [Spree::PAYONE::Utils::Score::GREEN_SYMBOL, Spree::PAYONE::Utils::Score::GREEN],
+              [Spree::PAYONE::Utils::Score::YELLOW_SYMBOL, Spree::PAYONE::Utils::Score::YELLOW],
+              [Spree::PAYONE::Utils::Score::RED_SYMBOL, Spree::PAYONE::Utils::Score::RED]]
           }
         }
         

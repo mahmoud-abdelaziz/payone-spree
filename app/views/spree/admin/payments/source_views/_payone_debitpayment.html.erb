@@ -8,7 +8,7 @@
     <tr>
       <td><%= label_tag nil, t(:bank_country) %>:</td>
       <td>
-        <%= t(PayOne::Utils::BankCountry.validate_symbol(payment.source.bank_country)) %>
+        <%= t(Spree::PAYONE::Utils::BankCountry.validate_symbol(payment.source.bank_country)) %>
       </td>
       <td><%= label_tag nil, t(:bank_account) %>:</td>
       <td>

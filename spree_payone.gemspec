@@ -9,14 +9,13 @@ Gem::Specification.new do |s|
 
   s.authors     = ['Maciej Gowin', 'Florian Salis']
   s.email       = 'maciej.gowin@phocus.pl'
-  s.homepage    = 'http://payone.de'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency('spree_core', '>=1.1.1')
+  s.add_dependency('spree_core',  '>= 1.1.1', '< 1.2.0')
   s.add_development_dependency 'rspec-rails'
 
 end

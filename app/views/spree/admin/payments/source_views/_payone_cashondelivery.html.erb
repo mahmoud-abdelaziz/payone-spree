@@ -8,7 +8,7 @@
     <tr>
       <td><%= label_tag nil, t(:shipping_provider) %>:</td>
       <td>
-        <%= t(PayOne::Utils::ShippingProvider.validate_symbol(payment.source.shipping_provider)) %>
+        <%= t(Spree::PAYONE::Utils::ShippingProvider.validate_symbol(payment.source.shipping_provider)) %>
       </td>
     </tr>
   </table>

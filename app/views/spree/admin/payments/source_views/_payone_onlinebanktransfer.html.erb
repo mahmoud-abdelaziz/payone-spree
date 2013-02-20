@@ -8,11 +8,11 @@
     <tr>
       <td><%= label_tag nil, t(:online_bank_transfer_type) %>:</td>
       <td>
-        <%= t(PayOne::Utils::OnlineBankTransferType.validate_symbol(payment.source.online_bank_transfer_type)) %>
+        <%= t(Spree::PAYONE::Utils::OnlineBankTransferType.validate_symbol(payment.source.online_bank_transfer_type)) %>
       </td>
       <td><%= label_tag nil, t(:bank_country) %>:</td>
       <td>
-        <%= t(PayOne::Utils::BankCountry.validate_symbol(payment.source.bank_country)) %>
+        <%= t(Spree::PAYONE::Utils::BankCountry.validate_symbol(payment.source.bank_country)) %>
       </td>
     </tr>
     <tr>
@@ -28,7 +28,7 @@
     <tr>
       <td><%= label_tag nil, t(:bank_group_type) %>:</td>
       <td colspan="3">
-        <%= t(PayOne::Utils::BankGroupType.validate_symbol(payment.source.bank_group_type)) %>
+        <%= t(Spree::PAYONE::Utils::BankGroupType.validate_symbol(payment.source.bank_group_type)) %>
       </td>
     </tr>
   </table>

@@ -4,7 +4,7 @@ module Spree
     
     protected
       def process_payone_tsok_response
-        tsok_check = PayOne::Validators::TsokCheck.new request
+        tsok_check = ::Spree::PAYONE::Validators::TsokCheck.new request
         if tsok_check.tsok_request?
           if tsok_check.tsok_request?
             render :text => 'TSOK'

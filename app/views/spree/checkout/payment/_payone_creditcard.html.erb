@@ -1,9 +1,9 @@
 <%
   credit_card_type_options = []
   payment_method.preferences[:credit_card_types].to_s.downcase.split(/,/).each do |credit_card_type|
-    credit_card_type = PayOne::Utils::CreditCardType.validate(credit_card_type.strip)
+    credit_card_type = Spree::PAYONE::Utils::CreditCardType.validate(credit_card_type.strip)
     if credit_card_type != nil
-      credit_card_type_symbol = PayOne::Utils::CreditCardType.validate_symbol(credit_card_type) || credit_card_type
+      credit_card_type_symbol = Spree::PAYONE::Utils::CreditCardType.validate_symbol(credit_card_type) || credit_card_type
       credit_card_type_options << [t(credit_card_type_symbol), credit_card_type]
     end
   end

@@ -9,7 +9,7 @@ module Spree
     
     # Provider class responsible for Spree gateway actions implementation
     def provider_class
-      ::PayOne::Provider::Payment::CashOnDelivery
+      ::Spree::PAYONE::Provider::Payment::CashOnDelivery
     end
     
     # Payment source class

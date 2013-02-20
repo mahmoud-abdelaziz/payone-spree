@@ -22,7 +22,7 @@
       </td>
       <td><%= label_tag nil, t(:card_type) %>:</td>
       <td>
-        <%= t(PayOne::Utils::CreditCardType.validate_symbol(payment.source.cc_type)) %>
+        <%= t(Spree::PAYONE::Utils::CreditCardType.validate_symbol(payment.source.cc_type)) %>
       </td>
     </tr>
   </table>

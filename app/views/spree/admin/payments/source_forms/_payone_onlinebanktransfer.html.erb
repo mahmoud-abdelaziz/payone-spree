@@ -5,10 +5,10 @@
   
   online_bank_transfer_type_options = []
   payment_method.preferences[:online_bank_transfer_types].to_s.downcase.split(/,/).each do |online_bank_transfer_type|
-    online_bank_transfer_type = PayOne::Utils::OnlineBankTransferType.validate(online_bank_transfer_type.strip)
+    online_bank_transfer_type = Spree::PAYONE::Utils::OnlineBankTransferType.validate(online_bank_transfer_type.strip)
     if online_bank_transfer_type != nil
-      online_bank_transfer_type_symbol = PayOne::Utils::OnlineBankTransferType.validate_symbol(online_bank_transfer_type) || online_bank_transfer_type
-      if PayOne::Utils::OnlineBankTransferType.validate_online_bank_transfer_type_country(online_bank_transfer_type_symbol, country_code)
+      online_bank_transfer_type_symbol = Spree::PAYONE::Utils::OnlineBankTransferType.validate_symbol(online_bank_transfer_type) || online_bank_transfer_type
+      if Spree::PAYONE::Utils::OnlineBankTransferType.validate_online_bank_transfer_type_country(online_bank_transfer_type_symbol, country_code)
         online_bank_transfer_type_options << [t(online_bank_transfer_type_symbol), online_bank_transfer_type]
       end
     end
@@ -42,11 +42,11 @@
 <%
   eps_bank_group_type_options = {}
   idl_bank_group_type_options = {}
-  PayOne::Utils::BankGroupType.eps_list.each do |type|
-    eps_bank_group_type_options[type] = t(PayOne::Utils::BankGroupType.validate_symbol(type))
+  Spree::PAYONE::Utils::BankGroupType.eps_list.each do |type|
+    eps_bank_group_type_options[type] = t(Spree::PAYONE::Utils::BankGroupType.validate_symbol(type))
   end
-  PayOne::Utils::BankGroupType.idl_list.each do |type|
-    idl_bank_group_type_options[type] = t(PayOne::Utils::BankGroupType.validate_symbol(type))
+  Spree::PAYONE::Utils::BankGroupType.idl_list.each do |type|
+    idl_bank_group_type_options[type] = t(Spree::PAYONE::Utils::BankGroupType.validate_symbol(type))
   end
 %>
 

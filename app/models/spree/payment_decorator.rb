@@ -41,7 +41,7 @@ module Spree
         self.response_code = response.authorization
         self.avs_response = response.avs_result['code']
         self.send("#{success_state}!")
-      elsif response.is_a?(::PayOne::Provider::Payment::Response) && response.redirect?
+      elsif response.is_a?(::Spree::PAYONE::Provider::Payment::Response) && response.redirect?
         self.response_code = response.authorization
         self.avs_response = response.avs_result['code']
         self.redirect_url = response.redirect_url

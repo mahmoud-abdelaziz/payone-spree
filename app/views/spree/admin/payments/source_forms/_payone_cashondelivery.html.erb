@@ -1,6 +1,6 @@
 <%
   shipping_provider = payment_method.preferences[:shipping_provider]
-  shipping_provider = PayOne::Utils::ShippingProvider.validate(shipping_provider)
+  shipping_provider = Spree::PAYONE::Utils::ShippingProvider.validate(shipping_provider)
 %>
 
 <% param_prefix = "payment_source[#{payment_method.id}]" %>

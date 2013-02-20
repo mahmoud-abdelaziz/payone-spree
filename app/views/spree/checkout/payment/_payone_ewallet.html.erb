@@ -1,6 +1,6 @@
 <%
   wallet_type = payment_method.preferences[:wallet_type]
-  wallet_type = PayOne::Utils::WalletType.validate(wallet_type)
+  wallet_type = Spree::PAYONE::Utils::WalletType.validate(wallet_type)
 %>
 
 <% param_prefix = "payment_source[#{payment_method.id}]" %>
