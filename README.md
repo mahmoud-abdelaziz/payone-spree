@@ -16,7 +16,7 @@ Add support for PAYONE payment methods and gateway as a payment methods.
   $ bundle install
 </pre>
 
-3. To copy and apply migrations run: 
+3. To copy and apply migrations, inject JavaScript and CSS includes run: 
 
 <pre>
   $ rails g spree_payone:install
