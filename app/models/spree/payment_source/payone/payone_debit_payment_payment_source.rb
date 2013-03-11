@@ -1,8 +1,4 @@
-##
-# PayoneDebitPaymentPaymentSource class
-# 
-# Class provides Spree debit payment payment method source.
-##
+# Spree payment method source for PAYONE debit payment.
 module Spree
   module PaymentSource
     module PAYONE

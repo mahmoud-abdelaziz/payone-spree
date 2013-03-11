@@ -1,20 +1,7 @@
-# This is the primary location for defining PAYONE spree preferences
+# Stores Spree PAYONE preferences.
 #
 # The expectation is that this is created once and stored in
-# the spree environment
-#
-# setters:
-# a.color = :blue
-# a[:color] = :blue
-# a.set :color = :blue
-# a.preferred_color = :blue
-#
-# getters:
-# a.color
-# a[:color]
-# a.get :color
-# a.preferred_color
-#
+# the spree environment.
 module Spree
   AppConfiguration.class_eval do
     

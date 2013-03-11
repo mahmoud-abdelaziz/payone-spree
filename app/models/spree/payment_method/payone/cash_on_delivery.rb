@@ -1,3 +1,7 @@
+# Spree payment method which covers PAYONE cash on delivery operations.
+#
+# Uses ::Spree::PaymentSource::PAYONE::CashOnDelivery for standard
+# Spree payment method action implementations.
 module Spree
   class PaymentMethod::PAYONE::CashOnDelivery < PaymentMethod::PAYONE::PaymentMethod
     
@@ -7,18 +11,18 @@ module Spree
     # Preferences accessors
     attr_accessible :preferred_shipping_provider
     
-    # Provider class responsible for Spree gateway actions implementation
+    # Returns provider class responsible for Spree payment method action implementations.
     def provider_class
       ::Spree::PAYONE::Provider::Payment::CashOnDelivery
     end
     
-    # Payment source class
+    # Returns payment source class.
     def payment_source_class
-      Spree::PaymentSource::PAYONE::PayoneCashOnDeliveryPaymentSource
+      ::Spree::PaymentSource::PAYONE::PayoneCashOnDeliveryPaymentSource
     end
     
     # Redefines method_type which allows to load correct partial template
-    # for payment method
+    # for payment method.
     def method_type
       'payone_cashondelivery'
     end

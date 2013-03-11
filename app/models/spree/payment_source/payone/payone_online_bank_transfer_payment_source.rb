@@ -1,8 +1,4 @@
-##
-# PayoneOnlineBankTransferPaymentSource class
-# 
-# Class provides Spree online bank transfer payment method source.
-##
+# Spree payment method source for PAYONE online bank transfer.
 module Spree
   module PaymentSource
     module PAYONE

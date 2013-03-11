@@ -1,8 +1,5 @@
-##
-# Logger class
-# 
-# Class provides simple logging functionallity based on standard logger.
-##
+# Provides simple logging functionallity based on standard logger and add additional
+# operations on PAYONE logs.
 module Spree::PAYONE
   class Logger
     include Singleton
@@ -28,9 +25,9 @@ module Spree::PAYONE
     # Logs if logging enabled.
     def log level, message
       timestamp = Time.now.utc.to_s
-      # Retrieving new connection moved to PayoneLog definition
+      # New connection retrieval moved to PayoneLog definition
       ActiveRecord::Base.connection_pool.with_connection do |connection|
-        # db logger
+        # DB logger
         if db_enabled?
           sql = 
             "INSERT INTO spree_payone_logs (`level`, `message`, `created_at`, `updated_at`)
@@ -39,7 +36,7 @@ module Spree::PAYONE
         end
       end
       
-      # file logger
+      # File logger
       if file_enabled?
         native_logger.debug '[' + timestamp + '] ' + level.to_s.upcase + ' -- : ' + message
       end

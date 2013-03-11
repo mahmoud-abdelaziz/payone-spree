@@ -1,8 +1,4 @@
-##
-# PayoneCashOnDeliveryPaymentSource class
-# 
-# Class provides Spree cash on delivery payment method source.
-##
+# Spree payment method source for PAYONE cash on delivery.
 module Spree
   module PaymentSource
     module PAYONE

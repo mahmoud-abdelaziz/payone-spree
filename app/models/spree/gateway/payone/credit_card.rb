@@ -1,10 +1,7 @@
-##
-# CreditCard class
-# 
-# Spree gateway which deals with PAYONE credit cards operations.
-# Uses CreditCardGatewayProvider for standard Spree gateway actions
-# as its implementation.
-##
+# Spree gateway which covers PAYONE credit card operations.
+#
+# Uses ::Spree::PAYONE::Provider::Payment::CreditCard for standard
+# Spree gateway action implementations.
 module Spree
   class Gateway::PAYONE::CreditCard < Gateway
     
@@ -28,17 +25,17 @@ module Spree
     attr_accessible :preferred_currency_code
     attr_accessible :preferred_credit_card_types
     
-    # Provider class responsible for Spree gateway actions implementation
+    # Returns provider class responsible for Spree gateway action implementations.
     def provider_class
       ::Spree::PAYONE::Provider::Payment::CreditCard
     end
     
-    # Payment source class
+    # Returns payment source class.
     def payment_source_class
       Creditcard
     end
     
-    # Returns profiles storage support (PAYONE on-site storage not supported)
+    # Returns profiles storage support (PAYONE on-site storage not supported).
     def payment_profiles_supported?
       true
     end
@@ -47,7 +44,7 @@ module Spree
       creditcard = payment.source
       method = payment.payment_method
       
-      # process creditcardcheck and retrieve profile id
+      # Process creditcardcheck and retrieve profile id
       if creditcard.gateway_customer_profile_id.nil?
         creditCardCheck = ::Spree::PAYONE::Provider::Check::CreditCard.new(method.options)
         response = creditCardCheck.process payment.source, {}
@@ -65,13 +62,13 @@ module Spree
       end
     end
     
-    # Workaround for disabling server option.
+    # Workaround for disabling server option
     # Disable standard :server preference from gateway
     # Add :server option which depends on :test_mode setting
     alias_method :original_preferences, :preferences
     alias_method :original_options, :options
     
-    # Returns PAYONE gateway preferences (disable :server preference)
+    # Returns PAYONE gateway preferences (disable :server preference).
     def preferences
       preferences_map = {}
       self.original_preferences.each do |key, value|
@@ -94,7 +91,7 @@ module Spree
     end
     
     # Redefines method_type which allows to load correct partial template
-    # for gateway (does not load default _gateway.html.erb template)
+    # for gateway (does not load default _gateway.html.erb template).
     def method_type
       'payone_creditcard'
     end

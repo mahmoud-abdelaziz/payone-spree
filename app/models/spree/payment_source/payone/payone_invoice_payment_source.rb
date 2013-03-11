@@ -1,8 +1,4 @@
-##
-# PayoneInvoicePaymentSource class
-# 
-# Class provides Spree invoice payment method source.
-##
+# Spree payment method source for PAYONE invoice.
 module Spree
   module PaymentSource
     module PAYONE

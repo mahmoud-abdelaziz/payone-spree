@@ -1,8 +1,4 @@
-##
-# RequestHistory class
-# 
-# Class provides request history logging functionallity.
-##
+# Provides simple request history functionallity based on PAYONE request history entries.
 module Spree::PAYONE
   class RequestHistory
     include Singleton
@@ -11,7 +7,7 @@ module Spree::PAYONE
     def entry txid, request_type, status, overall_status, success_token, back_token, error_token, payment_id = nil
       timestamp = Time.now.utc.to_s
       overall_status = overall_status ? 't' : 'f'
-      # Retrieving new connection moved to PayoneRequestHistory definition
+      # New connection retrieval moved to PayoneRequestHistory definition
       ActiveRecord::Base.connection_pool.with_connection do |connection|
         sql = 
           "INSERT INTO spree_payone_request_history_entries (`txid`, `request_type`, `status`, `overall_status`, `success_token`, `back_token`, `error_token`, `payment_id`, `created_at`, `updated_at`)
@@ -20,12 +16,11 @@ module Spree::PAYONE
       end
     end
     
-    # Counts requests with successful overal status for specified txid.
+    # Counts requests with successful overal status with specified txid.
     def count_overall_status_by_txid txid
       ::Spree::PayoneRequestHistoryEntry.where(:txid => txid.to_s, :overall_status => true).count
     end
     
-    # Helpers for static invocation.
     def self.entry txid, request_type, status, overall_status, success_token, back_token, error_token, payment_id = nil
       Spree::PAYONE::RequestHistory.instance.entry txid, request_type, status, overall_status, success_token, back_token, error_token, payment_id
     end

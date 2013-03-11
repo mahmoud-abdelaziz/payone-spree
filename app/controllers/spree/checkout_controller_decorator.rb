@@ -1,8 +1,8 @@
 module Spree
   CheckoutController.class_eval do
     
-    # Updates the order and advances to the next state (when possible.)
-    # Redifinition for redirect.
+    # Updates the order and advances to the next state (when possible).
+    # Contains redefined Order steps to handle PAYONE thirdparty redirection.
     def update
       if @order.update_attributes(object_params)
         fire_event('spree.checkout.update')
@@ -17,7 +17,7 @@ module Spree
                   payment.update_attribute key, value
                 end
                 
-                # change state to :payment_redirect
+                # Change state to :payment_redirect
                 @order.next
                 redirect_to payment.redirect_url.to_s and return
               end
@@ -47,6 +47,7 @@ module Spree
       token = params[:token]
       action_token = params[:action_token]
       payment_id = params[:payment_id]
+      
       # Try to find payment with specified token
       if @order.token == token
         payments =
@@ -82,7 +83,7 @@ module Spree
         end
       end
       
-      # redirect to error
+      # Redirect to error if not handled already
       flash[:error] = t(:payment_processing_failed)
       respond_with(@order, :location => checkout_state_path(@order.state))
       return
@@ -92,6 +93,7 @@ module Spree
       token = params[:token]
       action_token = params[:action_token]
       payment_id = params[:payment_id]
+      
       # Try to find payment with specified token
       if @order.token == token
         payments =
@@ -120,6 +122,7 @@ module Spree
       token = params[:token]
       action_token = params[:action_token]
       payment_id = params[:payment_id]
+      
       # Try to find payment with specified token
       if @order.token == token
         payments =

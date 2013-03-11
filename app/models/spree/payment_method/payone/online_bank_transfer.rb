@@ -1,3 +1,7 @@
+# Spree payment method which covers PAYONE online bank transfer operations.
+#
+# Uses ::Spree::PaymentSource::PAYONE::OnlineBankTransfer for standard
+# Spree payment method action implementations.
 module Spree
   class PaymentMethod::PAYONE::OnlineBankTransfer < PaymentMethod::PAYONE::PaymentMethod
     
@@ -7,23 +11,23 @@ module Spree
     # Preferences accessors
     attr_accessible :preferred_online_bank_transfer_types
     
-    # Returns true if confirmation needed before processing the payment
+    # Returns true if confirmation needed before processing the payment.
     def payment_confirmation_required?
       true
     end
     
-    # Provider class responsible for Spree gateway actions implementation
+    # Returns provider class responsible for Spree payment method action implementations.
     def provider_class
       ::Spree::PAYONE::Provider::Payment::OnlineBankTransfer
     end
     
-    # Payment source class
+    # Returns payment source class.
     def payment_source_class
-      Spree::PaymentSource::PAYONE::PayoneOnlineBankTransferPaymentSource
+      ::Spree::PaymentSource::PAYONE::PayoneOnlineBankTransferPaymentSource
     end
     
     # Redefines method_type which allows to load correct partial template
-    # for payment method
+    # for payment method.
     def method_type
       'payone_onlinebanktransfer'
     end

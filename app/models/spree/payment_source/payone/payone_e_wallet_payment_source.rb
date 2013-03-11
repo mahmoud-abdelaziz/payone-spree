@@ -1,8 +1,4 @@
-##
-# PayoneEWalletPaymentSource class
-# 
-# Class provides Spree e-wallet payment method source.
-##
+# Spree payment method source for PAYONE e-wallet.
 module Spree
   module PaymentSource
     module PAYONE

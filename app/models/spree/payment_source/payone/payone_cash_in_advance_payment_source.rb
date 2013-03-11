@@ -1,8 +1,4 @@
-##
-# PayoneCashInAdvancePaymentSource class
-# 
-# Class provides Spree cash in advance payment method source.
-##
+# Spree payment method source for PAYONE cash in advance.
 module Spree
   module PaymentSource
     module PAYONE

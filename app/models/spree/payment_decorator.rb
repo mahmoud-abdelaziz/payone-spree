@@ -6,8 +6,6 @@ module Spree
       !!admin_created
     end
     
-    # scope :redirected, with_state('redirected')
-    
     state_machine :initial => 'checkout' do
       # With card payments, happens before purchase or authorization happens
       event :started_processing do
@@ -28,10 +26,6 @@ module Spree
       event :void do
         transition :from => ['pending', 'completed', 'checkout'], :to => 'void'
       end
-      # PAYONE payments with redirections (credit card 3-d secure)
-      # event :redirect do
-      #   transition :from => ['processing', 'pending', 'checkout'], :to => 'redirected'
-      # end
     end
     
     def handle_response(response, success_state, failure_state, redirect_state = :started_processing)

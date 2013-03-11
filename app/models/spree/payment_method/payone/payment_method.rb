@@ -1,3 +1,7 @@
+# Spree payment method which covers general PAYONE operations.
+#
+# This class must not be instantiate. It is used to gather all common settings
+# for Spree PAYONE payment method.
 module Spree
   class PaymentMethod::PAYONE::PaymentMethod < PaymentMethod
     delegate_belongs_to :provider, :authorize, :purchase, :capture, :void, :credit
@@ -20,11 +24,12 @@ module Spree
     attr_accessible :preferred_test_mode
     attr_accessible :preferred_currency_code
     
-    # Instantiates the selected payment method and configures with the options stored in the database
+    # Instantiates the selected payment method and configures with the options stored in the database.
     def self.current
       super
     end
     
+    # Instantiates the provider class.
     def provider
       gateway_options = options
       gateway_options.delete :login if gateway_options.has_key?(:login) and gateway_options[:login].nil?
@@ -52,12 +57,12 @@ module Spree
       end
     end
     
-    # Returns profiles storage support (PAYONE on-site storage not supported)
+    # Returns profiles storage support (PAYONE on-site storage not supported).
     def payment_profiles_supported?
       false
     end
     
-    # Returns true if confirmation needed before processing the payment
+    # Returns true if confirmation needed before processing the payment.
     def payment_confirmation_required?
       false
     end

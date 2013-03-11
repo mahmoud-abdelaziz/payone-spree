@@ -41,7 +41,7 @@ module Spree
 
       private
         
-        # Allow different formats of json data to suit different ajax calls
+        # Allows different formats of json data to suit different ajax calls.
         def json_data
           json_format = params[:json_format] or 'default'
           case json_format
