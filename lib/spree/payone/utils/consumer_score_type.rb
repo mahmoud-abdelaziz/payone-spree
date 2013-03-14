@@ -1,17 +1,13 @@
-##
-# ConsumerScoreType class
-# 
-# Class provides PAYONE consumer score types.
-##
+# Container for consumer score type values.
 module Spree::PAYONE
   module Utils
     class ConsumerScoreType
-      # Consumer score type values.
+      # Consumer score type values
       IH = 'IH'
       IA = 'IA'
       IB = 'IB'
       
-      # Consumer score type symbol values.
+      # Consumer score type symbol values
       IH_SYMBOL = :consumer_score_type_ih
       IA_SYMBOL = :consumer_score_type_ia
       IB_SYMBOL = :consumer_score_type_ib
@@ -44,7 +40,7 @@ module Spree::PAYONE
         end
       end
       
-      # Returns all values array
+      # Returns all values array.
       def self.list()
         [self::IH, self::IA, self::IB]
       end

@@ -1,12 +1,8 @@
-##
-# CreditCardType class
-# 
-# Class provides PAYONE card type validation.
-##
+# Container for credit card type values.
 module Spree::PAYONE
   module Utils
     class CreditCardType
-      # Credit card type values.
+      # Credit card type values
       VISA = 'V'
       MASTERCARD = 'M'
       AMEX = 'A'
@@ -16,7 +12,7 @@ module Spree::PAYONE
       DISCOVER = 'C'
       CARTE_BLEUE = 'B'
       
-      # Credit card type symbol values.
+      # Credit card type symbol values
       VISA_SYMBOL = :credit_card_type_visa
       MASTERCARD_SYMBOL = :credit_card_type_mastercard
       AMEX_SYMBOL = :credit_card_type_amex
@@ -72,6 +68,12 @@ module Spree::PAYONE
           else
             return nil
         end
+      end
+      
+      # Returns all values array.
+      def self.list()
+        [self::VISA, self::MASTERCARD, self::AMEX, when self::DINERS, self::JBC,
+         self::MAESTRO_INTERNATIONAL, self::DISCOVER, self::CARTE_BLEUE]
       end
     end
   end

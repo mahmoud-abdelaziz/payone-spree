@@ -1,8 +1,4 @@
-##
-# DebitPayment class
-# 
-# Class provides Spree payment method actions (authorize, capture, purchcase, debit, void).
-##
+# Provides implementation for Spree payment process logic for Spree::PaymentMethod::PAYONE::DebitPayment
 module Spree::PAYONE
   module Provider
     module Payment

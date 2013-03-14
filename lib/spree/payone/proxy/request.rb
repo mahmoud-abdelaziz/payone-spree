@@ -1,9 +1,4 @@
-##
-# Request class
-# 
-# Class responsible for communication with PAYONE Server and request
-# parameters storage.
-##
+# Representation of raw PAYONE request.
 module Spree::PAYONE
   module Proxy
     class Request < ParameterContainer
@@ -34,10 +29,11 @@ module Spree::PAYONE
       # Payment process ID (PAYONE)
       parameter_accessor :txid
       
+      # Clearing type
       # elv: Debit payment, cc: Credit card, vor: Prepayment/Cash In Advance, rec: Invoice
       # cod: Cash on delivery, sb: Online Bank Transfer, wlt: e-wallet
       parameter_accessor :clearingtype    
-      # Merchant reference number for the payment process. (Permitted symbols: 0-9, a-z, A-Z, .,-,_,/)
+      # Merchant reference number for the payment process (permitted symbols: 0-9, a-z, A-Z, .,-,_,/)
       parameter_accessor :reference
       # Total amount (in smallest currency unit! e.g. cent)
       parameter_accessor :amount    
@@ -51,7 +47,7 @@ module Spree::PAYONE
       # URL "Back" or "Cancel" (only if not provided in the PMI)
       parameter_accessor :backurl
       
-      # Merchant's customer ID (Permitted symbols: 0-9, a-z, A-Z, .,-,_,/)
+      # Merchant's customer ID (permitted symbols: 0-9, a-z, A-Z, .,-,_,/)
       parameter_accessor :customerid
       # First name
       parameter_accessor :firstname
@@ -93,15 +89,18 @@ module Spree::PAYONE
       # State (ISO 3166 subdivisions) (only if country=US or CA)
       parameter_accessor :shipping_state
       
-      # Address check type: BA: Addresscheck Basic, PE: Addresscheck Person, NO: Do not carry out address check
+      # Address check type
+      # BA: Addresscheck Basic, PE: Addresscheck Person, NO: Do not carry out address check
       parameter_accessor :addresschecktype
       
-      # Consumer score type: IH: Infoscore (hard criteria), IA: Infoscore (all criteria), IB: Infoscore (all criteria + bonuses score)
+      # Consumer score type
+      # IH: Infoscore (hard criteria), IA: Infoscore (all criteria), IB: Infoscore (all criteria + bonuses score)
       parameter_accessor :consumerscoretype
       
       # Card number
       parameter_accessor :cardpan
-      # Card type: V: Visa, M: MasterCard, A: Amex, D: Diners, J: JCB,
+      # Card type
+      # V: Visa, M: MasterCard, A: Amex, D: Diners, J: JCB,
       # O: Maestro International, C: Discover, B: Carte Bleue
       parameter_accessor :cardtype
       # Expiry date YYMM
@@ -112,6 +111,7 @@ module Spree::PAYONE
       parameter_accessor :cardholder
       # Pseudo card number
       parameter_accessor :pseudocardpan
+      # Store card data
       # no: Card data is not stored
       # yes: Card data is stored, a pseudo card number is returned
       parameter_accessor :storecarddata
@@ -121,7 +121,7 @@ module Spree::PAYONE
       # EPS: eps – online transfer (AT), PFF: PostFinance E-Finance (CH)
       # PFC: PostFinance Card (CH), IDL: iDeal (NL)
       parameter_accessor :onlinebanktransfertype
-      # Account type/ country (DE, AT, CH, NL)
+      # Account type/country (DE, AT, CH, NL)
       parameter_accessor :bankcountry
       # Account number (giropay & instant money transfer only)
       parameter_accessor :bankaccount
@@ -269,8 +269,9 @@ module Spree::PAYONE
       end
       
       # Sets Certificate Authority file used by PAYONE.
+      #
       # The same functionality may be achived globally using below code:
-      # Code:
+      #
       #   module Net
       #     class HTTP
       #       alias_method :original_use_ssl=, :use_ssl=

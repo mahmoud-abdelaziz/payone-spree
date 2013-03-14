@@ -1,8 +1,4 @@
-##
-# Address class
-# 
-# Class provides PAYONE addresscheck actions.
-##
+# Provides implementation for PAYONE address check.
 module Spree::PAYONE
   module Provider
     module Check

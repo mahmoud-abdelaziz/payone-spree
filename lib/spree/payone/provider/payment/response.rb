@@ -1,8 +1,4 @@
-##
-# Response class
-# 
-# Class provides PAYONE provider reponse based on ActiveMerchant response.
-##
+# Provides ActiveMerchant response wrapper for PAYONE requests.
 module Spree::PAYONE
   module Provider
     module Payment

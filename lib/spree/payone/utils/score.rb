@@ -1,22 +1,18 @@
-##
-# Score class
-# 
-# Class provides PAYONE address check types.
-##
+# Container for score values.
 module Spree::PAYONE
   module Utils
     class Score
-      # Score values.
+      # Score values
       GREEN  = 'G'
       YELLOW = 'Y'
       RED    = 'R'
       
-      # Score symbol values.
+      # Score symbol values
       GREEN_SYMBOL  = :score_green
       YELLOW_SYMBOL = :score_yellow
       RED_SYMBOL    = :score_red
       
-      # Score symbol integer values.
+      # Score symbol integer values
       GREEN_INT  = 0
       YELLOW_INT = 1
       RED_INT    = 2
@@ -77,7 +73,7 @@ module Spree::PAYONE
         end
       end
       
-      # Gets lower score from list
+      # Gets lower score from list.
       def self.lower_score(score_a, score_b)
         score_int_a = self.to_i score_a
         score_int_b = self.to_i score_b
@@ -88,7 +84,7 @@ module Spree::PAYONE
         return self.to_value(score_int_lower)
       end
       
-      # Returns all values array
+      # Returns all values array.
       def self.list()
         [self::GREEN, self::YELLOW, self::RED]
       end

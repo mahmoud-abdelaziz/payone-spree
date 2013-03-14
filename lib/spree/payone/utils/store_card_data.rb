@@ -1,16 +1,12 @@
-##
-# StoreCardData class
-# 
-# Class provides PAYONE store credit card data options.
-##
+# Container for store card data values.
 module Spree::PAYONE
   module Utils
     class StoreCardData
-      # Store card data values.
+      # Store card data values
       YES = 'yes'
       NO = 'no'
       
-      # Store card data symbol values.
+      # Store card data symbol values
       YES_SYMBOL = :store_card_data_yes
       NO_SYMBOL = :store_card_data_no
       
@@ -36,6 +32,11 @@ module Spree::PAYONE
           else
             return nil
         end
+      end
+      
+      # Returns all values array.
+      def self.list()
+        [self::YES, self::NO]
       end
     end
   end

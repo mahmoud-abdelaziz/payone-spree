@@ -1,18 +1,14 @@
-##
-# BankCountry class
-# 
-# Class provides PAYONE bank countries.
-##
+# Container for bank country values.
 module Spree::PAYONE
   module Utils
     class BankCountry
-      # Bank country values.
+      # Bank country values
       DE = 'DE'
       AT = 'AT'
       NL = 'NL'
       CH = 'CH'
       
-      # Bank country symbol values.
+      # Bank country symbol values
       DE_SYMBOL = :bank_country_de
       AT_SYMBOL = :bank_country_at
       NL_SYMBOL = :bank_country_nl

@@ -1,24 +1,21 @@
-##
-# OrderAddress class
-# 
-# Class provides PAYONE address validation for order.
-##
+# Provides implementation for PAYONE orderaddress validation.
 module Spree::PAYONE
   module Validators
     class OrderAddress
-
+      
       # Validates order addresses.
       def self.validate order
-        # cleanup previuosly blocked payment methods
+        # Cleanup previuosly blocked payment methods
         order.blocked_payment_method_types= ''
         
         valid = self.process_address_validation order, 'billing_address'
         valid = self.process_address_validation order, 'shipping_address'
-        # valid
+        
+        # Valid even if all paymet methods has been deleted
         true
       end
       
-      # Processes validation for specified order address field (billing or shipping)
+      # Processes validation for specified order address field (billing or shipping).
       def self.process_address_validation order, address_field
         return false unless order.respond_to?(address_field)
         order_address = order.send(address_field)
@@ -51,7 +48,7 @@ module Spree::PAYONE
         
         valid = response.valid_status?
         if valid
-          # apply corrected data
+          # Apply corrected data
           if response.secstatus == Spree::PAYONE::Utils::SecStatus::S20
             order_address.firstname = response.firstname unless response.firstname == nil
             order_address.lastname = response.lastname unless response.lastname == nil
@@ -60,7 +57,7 @@ module Spree::PAYONE
             order_address.city = response.city unless response.city == nil
           end
           
-          # map Addresscheck person score to Consumerscore score
+          # Map Addresscheck person score to Consumerscore score
           unless response.personstatus == nil
             score = nil
             map = self.address_check_person_status_to_consumer_score_score_mapping
@@ -68,9 +65,9 @@ module Spree::PAYONE
               score = Spree::PAYONE::Utils::Score.validate(map[response.personstatus])
             end
             
-            # rewrite score if mapped more restricted
+            # Rewrite score if mapped more restricted
             response.score = Spree::PAYONE::Utils::Score.lower_score(response.score, score || Spree::PAYONE::Utils::Score::RED)
-            # add error message even if will not fail
+            # Add error message even if will not fail
             order.errors.add(:base, Spree::PAYONE::Utils::PersonStatus.validate_symbol(response.personstatus))
           end
         else
@@ -91,10 +88,11 @@ module Spree::PAYONE
         valid
       end
       
+      # Handles consumerscore RED response.
       def self.handle_consumer_score_response_red order
         blocked = order.blocked_payment_method_types_array
         
-        # block all blocked methods
+        # Block all blocked methods
         blocked << Spree::Gateway::PAYONE::CreditCard.to_s
         blocked << Spree::PaymentMethod::PAYONE::OnlineBankTransfer.to_s
         blocked << Spree::PaymentMethod::PAYONE::DebitPayment.to_s
@@ -108,6 +106,7 @@ module Spree::PAYONE
         false
       end
       
+      # Handles consumerscore YELLOW response.
       def self.handle_consumer_score_response_yellow order
         allow_under = Spree::Config[:payone_consumer_score_on_yellow_score_allow_total_under].to_s.to_f
         block_over = Spree::Config[:payone_consumer_score_on_yellow_score_block_total_over].to_s.to_f
@@ -118,8 +117,8 @@ module Spree::PAYONE
           return self.handle_consumer_score_response_red order
         else
           blocked = order.blocked_payment_method_types_array
-          # check which payment methods should be blocked
-          # add blocked methods
+          # Check which payment methods should be blocked
+          # Add blocked methods
           blocked << Spree::Gateway::PAYONE::CreditCard.to_s \
             if !Spree::Config[:payone_consumer_score_on_yellow_score_gateway_payone_credit_card_enabled]
           blocked << Spree::PaymentMethod::PAYONE::OnlineBankTransfer.to_s \
@@ -141,11 +140,13 @@ module Spree::PAYONE
         end
       end
       
+      # Handles consumerscore GREEN response.
       def self.handle_consumer_score_response_green order
-        # do nothing
+        # Do nothing
         true
       end
       
+      # Returns mapping between addresscheck person status and consumerscore core.
       def self.address_check_person_status_to_consumer_score_score_mapping
         map = {
           Spree::PAYONE::Utils::PersonStatus::NONE =>

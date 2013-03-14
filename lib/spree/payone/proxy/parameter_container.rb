@@ -1,9 +1,4 @@
-##
-# ParameterContainer class
-# 
-# Class responsible for parameters storage and generating parameters
-# access methods.
-##
+# Responsible for parameters storage and auto-generation of parameter getters/setters.
 module Spree::PAYONE
   module Proxy
     class ParameterContainer

@@ -1,17 +1,13 @@
-##
-# SecStatus class
-# 
-# Class provides PAYONE address check types.
-##
+# Container for sec status values.
 module Spree::PAYONE
   module Utils
     class SecStatus
-      # Second status values.
+      # Second status values
       S10 = '10'
       S20 = '20'
       S30 = '30'
       
-      # Second status symbol values.
+      # Second status symbol values
       S10_SYMBOL = :sec_status_s10
       S20_SYMBOL = :sec_status_s20
       S30_SYMBOL = :sec_status_s30
@@ -44,7 +40,7 @@ module Spree::PAYONE
         end
       end
       
-      # Returns all values array
+      # Returns all values array.
       def self.list()
         [self::S10, self::S20, self::S30]
       end

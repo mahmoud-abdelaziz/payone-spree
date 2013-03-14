@@ -1,8 +1,4 @@
-##
-# ConsumerScore class
-# 
-# Class provides PAYONE consumerscore actions.
-##
+# Provides implementation for PAYONE consumerscore check.
 module Spree::PAYONE
   module Provider
     module Check

@@ -1,12 +1,8 @@
-##
-# PersonStatus class
-# 
-# Class provides PAYONE address check types.
-##
+# Container for person status values.
 module Spree::PAYONE
   module Utils
     class PersonStatus
-      # Person status values.
+      # Person status values
       NONE = 'NONE'
       PPB  = 'PPB'
       PHB  = 'PHB'
@@ -16,7 +12,7 @@ module Spree::PAYONE
       PPV  = 'PPV'
       PPF  = 'PPF'
       
-      # Person status symbol values.
+      # Person status symbol values
       NONE_SYMBOL = :person_status_none
       PPB_SYMBOL  = :person_status_ppb
       PHB_SYMBOL  = :person_status_phb
@@ -74,7 +70,7 @@ module Spree::PAYONE
         end
       end
       
-      # Returns all values array
+      # Returns all values array.
       def self.list()
         [self::NONE, self::PPB, self::PHB, self::PAB, self::PKI, self::PNZ, self::PPV, self::PPF]
       end

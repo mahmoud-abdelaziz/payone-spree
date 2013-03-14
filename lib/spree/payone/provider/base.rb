@@ -1,7 +1,4 @@
-##
-# Base class
-# Class provides basic Spree PAYONE communication channel.
-##
+# Provides basic communication channel between PAYONE and Spree logic.
 module Spree::PAYONE
   module Provider
     class Base
@@ -39,7 +36,7 @@ module Spree::PAYONE
         end
       end
       
-      # Processes PAYONE request
+      # Processes PAYONE request.
       def process_request(request, options = {})
         Spree::PAYONE::Logger.info "PAYONE request parameters:\n" + request.to_s
         response = request.send
@@ -48,7 +45,7 @@ module Spree::PAYONE
         response
       end
       
-      # Stores request history
+      # Stores request history.
       def store_request_history(request, response, options = {})
         txid = response.txid
         if txid.to_s.empty?
@@ -62,6 +59,7 @@ module Spree::PAYONE
         RequestHistory.entry txid, request_type, status, overall_status, success_token, back_token, error_token, payment_id
       end
       
+      # Returns random token used in success PAYONE redirect url.
       def success_token
         if @success_token == nil
           @success_token = ::SecureRandom::hex(8)
@@ -69,6 +67,7 @@ module Spree::PAYONE
         @success_token
       end
       
+      # Returns random token used in back PAYONE redirect url.
       def back_token
         if @back_token == nil
           @back_token = ::SecureRandom::hex(8)
@@ -76,6 +75,7 @@ module Spree::PAYONE
         @back_token
       end
       
+      # Returns random token used in error PAYONE redirect url.
       def error_token
         if @error_token == nil
           @error_token = ::SecureRandom::hex(8)

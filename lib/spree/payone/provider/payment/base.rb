@@ -1,7 +1,4 @@
-##
-# Base method class
-# Class provides basic Spree PAYONE communication channel for gateways/payment methods.
-##
+# Provides basic communication channel between PAYONE and Spree payment process logic.
 module Spree::PAYONE
   module Provider
     module Payment
@@ -16,6 +13,7 @@ module Spree::PAYONE
         # Sets amount parameters.
         def set_amount_request_parameters(request, amount, gateway_options)
           request.amount= amount.to_i
+          
           # Note: if :currency_code preference is available for payment_method/gateway
           # Spree automatically adds its value to gateway_options under :currency key.
           # Of course we can set this value traditionally using payment_method/gateway preference.

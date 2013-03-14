@@ -1,17 +1,13 @@
-##
-# AddressCheckType class
-# 
-# Class provides PAYONE address check types.
-##
+# Container for address check type values.
 module Spree::PAYONE
   module Utils
     class AddressCheckType
-      # Address check type values.
+      # Address check type values
       BASIC = 'BA'
       PERSON = 'PE'
       NO = 'NO'
       
-      # Address check type symbol values.
+      # Address check type symbol values
       BASIC_SYMBOL = :address_check_type_basic
       PERSON_SYMBOL = :address_check_type_person
       NO_SYMBOL = :address_check_type_no
@@ -44,7 +40,7 @@ module Spree::PAYONE
         end
       end
       
-      # Returns all values array
+      # Returns all values array.
       def self.list()
         [self::BASIC, self::PERSON, self::NO]
       end

@@ -1,15 +1,11 @@
-##
-# WalletType class
-# 
-# Class provides PAYONE online bank transfer validation.
-##
+# Container for wallet type values.
 module Spree::PAYONE
   module Utils
     class WalletType
-      # E-wallet type values.
+      # E-wallet type values
       PAYPAL_EXPRESS = 'PPE'
       
-      # E-wallet type symbol values.
+      # E-wallet type symbol values
       PAYPAL_EXPRESS_SYMBOL = :wallet_type_paypal_express
       
       # Validates e-wallet type and returns PAYONE specific code.
@@ -22,7 +18,7 @@ module Spree::PAYONE
         end
       end
       
-      # Validates Online bank transfer type and returns symbol.
+      # Validates online bank transfer type and returns symbol.
       def self.validate_symbol(type)
         case self.validate(type)
           when self::PAYPAL_EXPRESS
@@ -30,6 +26,11 @@ module Spree::PAYONE
           else
             return nil
         end
+      end
+      
+      # Returns all values array.
+      def self.list()
+        [self::PAYPAL_EXPRESS]
       end
     end
   end

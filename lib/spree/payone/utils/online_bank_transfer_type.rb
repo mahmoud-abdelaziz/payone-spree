@@ -1,12 +1,8 @@
-##
-# OnlineBankTransferType class
-# 
-# Class provides PAYONE online bank transfer validation.
-##
+# Container for online bank transfer type values.
 module Spree::PAYONE
   module Utils
     class OnlineBankTransferType
-      # Online bank transfer type values.
+      # Online bank transfer type values
       INSTANT_MONEY_TRANSFER = 'PNT'
       GIROPAY = 'GPY'
       ONLINE_TRANSFER = 'EPS'
@@ -14,7 +10,7 @@ module Spree::PAYONE
       POSTFINANCE_CARD = 'PFC'
       IDEAL = 'IDL'
       
-      # Online bank transfer type symbol values.
+      # Online bank transfer type symbol values
       INSTANT_MONEY_TRANSFER_SYMBOL = :online_bank_transfer_type_instant_money_transfer
       GIROPAY_SYMBOL = :online_bank_transfer_type_giropay
       ONLINE_TRANSFER_SYMBOL = :online_bank_transfer_type_online_transfer
@@ -81,6 +77,12 @@ module Spree::PAYONE
           else
             return false
         end
+      end
+      
+      # Returns all values array.
+      def self.list()
+        [self::INSTANT_MONEY_TRANSFER, self::GIROPAY, self::ONLINE_TRANSFER,
+         self::POSTFINANCE_E_FINANCE, self::POSTFINANCE_CARD, self::IDEAL]
       end
     end
   end

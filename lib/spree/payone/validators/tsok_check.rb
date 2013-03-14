@@ -1,8 +1,4 @@
-##
-# TsokCheck class
-# 
-# Class provides PAYONE TSOK check and validation.
-##
+# Provides implementation for PAYONE TSOK validation.
 module Spree::PAYONE
   module Validators
     class TsokCheck

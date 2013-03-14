@@ -1,8 +1,4 @@
-##
-# CreditCard class
-# 
-# Class provides PAYONE creditcardcheck actions.
-##
+# Provides implementation for PAYONE creditcard check.
 module Spree::PAYONE
   module Provider
     module Check

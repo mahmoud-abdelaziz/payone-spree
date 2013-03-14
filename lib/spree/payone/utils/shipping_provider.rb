@@ -1,16 +1,12 @@
-##
-# ShippingProvider class
-# 
-# Class provides PAYONE online bank transfer validation.
-##
+# Container for shipping provider values.
 module Spree::PAYONE
   module Utils
     class ShippingProvider
-      # Shipping provider values.
+      # Shipping provider values
       DHL = 'DHL'
       BARTOLINI = 'BRT'
       
-      # Shipping provider symbol values.
+      # Shipping provider symbol values
       DHL_SYMBOL = :shipping_provider_dhl
       BARTOLINI_SYMBOL = :shipping_provider_bartolini
       
@@ -36,6 +32,11 @@ module Spree::PAYONE
           else
             return nil
         end
+      end
+      
+      # Returns all values array.
+      def self.list()
+        [self::DHL, self::BARTOLINI]
       end
     end
   end

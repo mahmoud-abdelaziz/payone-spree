@@ -1,17 +1,13 @@
-##
-# AddressValidationType class
-# 
-# Class provides address validation types.
-##
+# Container for address validation type values.
 module Spree::PAYONE
   module Utils
     class AddressValidationType
-      # Address validation type values.
+      # Address validation type values
       ADDRESSCHECK = 'addresscheck'
       CONSUMERSCORE = 'consumerscore'
       NONE = 'none'
       
-      # Address validation type symbol values.
+      # Address validation type symbol values
       ADDRESSCHECK_SYMBOL = :address_validation_type_address_check
       CONSUMERSCORE_SYMBOL = :address_validation_type_consumer_score
       NONE_SYMBOL = :address_validation_type_none
@@ -44,7 +40,7 @@ module Spree::PAYONE
         end
       end
       
-      # Returns all values array
+      # Returns all values array.
       def self.list()
         [self::ADDRESSCHECK, self::CONSUMERSCORE, self::NONE]
       end

@@ -1,10 +1,4 @@
-##
-# Response class
-# 
-# Class responsible for parsing PAYONE response body and response
-# parameters storage.
-##
-
+# Representation of raw PAYONE response.
 module Spree::PAYONE
   module Proxy
     class Response < ParameterContainer
@@ -94,14 +88,14 @@ module Spree::PAYONE
           end
       end
       
-      # Define parameters accessors dynamically
+      # Define parameters accessors dynamically.
       def dynamic_parameter_define parameter
         if not self.respond_to?(parameter)
           self.class.parameter_accessor parameter.to_sym
         end
       end
       
-      # Gets values of parameters which are not defined
+      # Gets values of parameters which are not defined.
       def method_missing(method_name, *args)
         method_name = method_name.to_s
         scan_for_value(method_name, @response_body)

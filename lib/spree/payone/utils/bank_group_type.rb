@@ -1,12 +1,8 @@
-##
-# BankGroupType class
-# 
-# Class provides PAYONE bank group types.
-##
+# Container for bank group type values.
 module Spree::PAYONE
   module Utils
     class BankGroupType
-      # Bank group type values.
+      # Bank group type values
       ARZ_OVB = 'ARZ_OVB'
       ARZ_BAF = 'ARZ_BAF'
       ARZ_NLH = 'ARZ_NLH'
@@ -39,7 +35,7 @@ module Spree::PAYONE
       SNS_REGIO_BANK = 'SNS_REGIO_BANK'
       ING_BANK = 'ING_BANK'
       
-      # Bank group type symbol values.
+      # Bank group type symbol values
       ARZ_OVB_SYMBOL = :bank_group_type_arz_ovb
       ARZ_BAF_SYMBOL = :bank_group_type_arz_baf
       ARZ_NLH_SYMBOL = :bank_group_type_arz_nlh
@@ -212,7 +208,7 @@ module Spree::PAYONE
         end
       end
       
-      # Returns all values array
+      # Returns all values array.
       def self.list()
         [self::ARZ_OVB, self::ARZ_BAF, self::ARZ_NLH, self::ARZ_VLH,
          self::AGARZ_BCS, self::ARZ_HTB, self::ARZ_HAA, self::ARZ_IKB,
@@ -224,7 +220,7 @@ module Spree::PAYONE
          self::TRIODOS_BANK, self::SNS_REGIO_BANK, self::ING_BANK]
       end
       
-      # Returns all values array for EPS
+      # Returns all values array for EPS.
       def self.eps_list()
         [self::ARZ_OVB, self::ARZ_BAF, self::ARZ_NLH, self::ARZ_VLH,
          self::AGARZ_BCS, self::ARZ_HTB, self::ARZ_HAA, self::ARZ_IKB,
@@ -234,7 +230,7 @@ module Spree::PAYONE
          self::HRAC_OOS, self::HRAC_SLB, self::HRAC_STM]
       end
       
-      # Returns all values array for IDL
+      # Returns all values array for IDL.
       def self.idl_list()
         [self::ABN_AMRO_BANK, self::RABOBANK, self::FRIESLAND_BANK, self::ASN_BANK,
          self::SNS_BANK, self::TRIODOS_BANK, self::SNS_REGIO_BANK, self::ING_BANK]

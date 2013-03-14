@@ -1,40 +1,4 @@
-##
-# CreditCard class
-# 
-# Class provides Spree gateway actions (authorize, capture, purchcase, debit, void).
-# 
-# PAYONE uses following request codes for specific actions for credit cards:
-# - preauthorization
-#   Credit card data is verified and stored. The amount is reserved on the customer's card.
-# - authorization
-#   Card data is verified. Card is charged immediately.
-# - capture
-#   The card is now charged using the reserved amount. Capturing preauthorised amounts.
-# - refund
-#   The amount is credited to the customer's card.
-# - debit
-#   The open balance is credited to or drawn from the customer's card.
-# In the Spree nomenclature (adopted from ActiveMerchant) following actions are specified:
-# - authorize
-#   Authorize a new charge.
-# - capture
-#   Capture a previously authorized charge.
-# - purchase
-#   Perform a simultaneous authorization and capture of a new charge.
-# - void
-#   Void a previously authorized charge. (Not yet fully supported)
-# - credit
-#   Issue a credit. (Not yet fully supported)
-# 
-# According to previously stated information we can create bridge between
-# PAYONE and Spree functionallity as follow:
-#      Spree           PAYONE
-#      authorize       preauthorization
-#      capture         capture
-#      purchase        authorization
-#      void            refund, N/A
-#      credit          N/A
-##
+# Provides implementation for Spree payment process logic for Spree::Gateway::PAYONE::CreditCard
 module Spree::PAYONE
   module Provider
     module Payment
@@ -146,6 +110,7 @@ module Spree::PAYONE
         end
         
         # Returns credit card type.
+        #
         # Spree allows to retrieve credit card type with creditcard.cc_type
         # but on this step this value is set to nil. Additionally Spree uses
         # Spree::Creditcard::CardDetector.type?(number) function to detect type.
