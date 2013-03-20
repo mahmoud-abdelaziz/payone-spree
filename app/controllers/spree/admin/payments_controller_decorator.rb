@@ -7,10 +7,10 @@ module Spree
         
         if @payment.payment_method.is_a?(Spree::Gateway::PAYONE::CreditCard)
           if @payment.payment_method.payment_profiles_supported? && params[:payone_card].present? and params[:payone_card] != 'new'
-            @payment.source = Creditcard.find_by_id(params[:payone_card])
+            @payment.source = CreditCard.find_by_id(params[:payone_card])
           end
         elsif @payment.payment_method.is_a?(Spree::Gateway) && @payment.payment_method.payment_profiles_supported? && params[:card].present? and params[:card] != 'new'
-          @payment.source = Creditcard.find_by_id(params[:card])
+          @payment.source = CreditCard.find_by_id(params[:card])
         end
         
         begin

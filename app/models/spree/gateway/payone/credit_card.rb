@@ -32,7 +32,7 @@ module Spree
     
     # Returns payment source class.
     def payment_source_class
-      Creditcard
+      CreditCard
     end
     
     # Returns profiles storage support (PAYONE on-site storage not supported).

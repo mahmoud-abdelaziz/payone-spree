@@ -23,7 +23,8 @@ module Spree::PAYONE
         
         # Sets order parameters.
         def set_order_request_parameters(request, gateway_options)
-          request.reference= gateway_options[:order_id].to_s + '/' + gateway_options[:payment_id].to_s
+          # Order id already containts appendix responsible for payment id
+          request.reference= gateway_options[:order_id].to_s
         end
         
         # Sets personal parameters.

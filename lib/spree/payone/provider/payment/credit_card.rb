@@ -113,7 +113,7 @@ module Spree::PAYONE
         #
         # Spree allows to retrieve credit card type with creditcard.cc_type
         # but on this step this value is set to nil. Additionally Spree uses
-        # Spree::Creditcard::CardDetector.type?(number) function to detect type.
+        # Spree::CreditCard::CardDetector.type?(number) function to detect type.
         # Below type check is based on creditcard preference previously set.
         def credit_card_type(creditcard)
           type = Spree::PAYONE::Utils::CreditCardType.validate(creditcard.cc_type)
