@@ -72,7 +72,7 @@ module Spree::PAYONE
       
       # Returns all values array.
       def self.list()
-        [self::VISA, self::MASTERCARD, self::AMEX, when self::DINERS, self::JBC,
+        [self::VISA, self::MASTERCARD, self::AMEX, self::DINERS, self::JBC,
          self::MAESTRO_INTERNATIONAL, self::DISCOVER, self::CARTE_BLEUE]
       end
     end
