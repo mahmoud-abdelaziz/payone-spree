@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_payone'
-  s.version     = '1.0.0'
+  s.version     = '1.2.0'
   s.summary     = 'Spree Extenstion for PAYONE'
   s.description = 'Payemnt gateway and methods for PAYONE FinanceGate Server for Spree'
   s.required_ruby_version = '>= 1.8.7'
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency('spree_core',  '>= 1.2.0')
+  s.add_dependency('spree_core',  '~> 1.2.0')
   s.add_development_dependency 'rspec-rails'
 
 end

@@ -28,4 +28,4 @@ After the installation visit 'PAYONE Documentation' under the 'Configuration' ta
 
 ## Dependencies
 
-* [Spree](https://github.com/spree/spree) (spree_core 1.1.x)
+* [Spree](https://github.com/spree/spree) (spree_core 1.2.x)
