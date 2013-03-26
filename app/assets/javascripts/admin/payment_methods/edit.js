@@ -44,7 +44,7 @@ function onDisabledPAYONEPaymentMethodGlobalSettings(method_name) {
 
 function registerPAYONEPaymentMethodGlobalSettingsSwithing(method_name)  {
   $('#' + method_name + '_preferred_use_global_account_settings').change(function() {
-      // in jQuery 1.6 or newer we have to use $(this).attr('checked') instead of $(this).attr('checked')
+      // in jQuery 1.6 or newer we have to use $(this).prop('checked') instead of $(this).attr('checked')
       if($(this).prop('checked')) {
         onEnabledPAYONEPaymentMethodGlobalSettings(method_name);
       }
